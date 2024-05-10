@@ -182,12 +182,7 @@ export default function Dashboard() {
                     </div>
                     
                     <Container className={`${styles.body}`}>
-                         <button onClick={()=>{
-                             console.log(topRatedTalents);
-                            
-                         }}>
-                            asdasdasd
-                         </button>
+                    
                         <Row className='mx-1 mb-3'>
                             {
                                 topRatedTalents?.slice(0, 5)?.map((item, index) => (
