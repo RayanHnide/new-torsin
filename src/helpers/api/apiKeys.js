@@ -4,6 +4,13 @@ const apiKeys = {
   individualRegistration: "talent/individual/registration",
 
   //login
+
+  //client
+  getTalentProposalJob: 'client/talentjob/proposal',
+  getProposalJob: 'client/job/proposal',
+  talentDetails: 'client/talent/details',//get
+
+  //
   userLogin: "talent/user/login",
 
   //password reset
@@ -31,6 +38,7 @@ const apiKeys = {
   mobileEmail: "verify/mobemail",
 
   //jobs
+  
   allJobs: "skill/exclude/job",
   jobCorrSkills: "skill/corresponding/job",
   searchJob: "job/list",
@@ -39,6 +47,9 @@ const apiKeys = {
   getPastJobs: "talent/pastJobandContract",
   getCity:"city/filter",
 
+  
+   //top rated talents
+   topRatedTalents: 'talent/top/rating',
   //ratings
   createRating: "common/rating/create",
   getRating: "common/rating/get",
@@ -87,8 +98,10 @@ const apiKeys = {
   searchUser: "user/search", //get
 
 
-   //talent details
-  talentDetails: 'client/talent/details'     //get
+   
+  
+  ///////////////////
+  
 };
 
 export default apiKeys;

@@ -1,35 +1,26 @@
 import { combineReducers } from 'redux';
-import ProfileReducers from "./profile";
+import ProfileReducers from './profile';
+import PublishJobReducers from './publishJob';
 import DashboardReducers from './dashboard';
 import ChatReducers from './chat';
-import ProposalReducers from './proposal';
-import NotificationReducers from './notifications';
-import ContractReducers from './contracts';
-import PaymentMethodReducers from './paymentMethods';
+import ContractReducers from './contract';
+import PaymentReducers from './Payment';
 import FeedsReducers from './feeds';
-import TalentReducers from './talentDetails';
 import ReportReducers from './report';
 import SupportReducers from './support';
-import RatingReducers from './ratings';
-import SidebarReducer from './sidebartoggle';
-import PublishJobReducers from './publishJob';
+import TalentReducers from './talentDetails';
 
 const appReducer = combineReducers({
     ProfileReducers,
-    DashboardReducers,
-    
-    TalentReducers,
     PublishJobReducers,
+    DashboardReducers,
     ChatReducers,
-    ProposalReducers,
-    NotificationReducers,
     ContractReducers,
-    PaymentMethodReducers,
+    PaymentReducers,
     FeedsReducers,
     ReportReducers,
     SupportReducers,
-    RatingReducers,
-    SidebarReducer
+    TalentReducers
 });
 
 const rootReducer = (state, action) => {

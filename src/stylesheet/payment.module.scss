@@ -28,3 +28,157 @@
   /* 22.19px */
   opacity: 0.8;
 }
+.modalTitle {
+  font-size: 24px;
+  font-family: Inter;
+  font-weight: 500;
+  line-height: 22.4px;
+  color: #333333
+}
+
+.cardNum {
+  font-size: 20px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 22.4px;
+  color: #333333;
+}
+
+.checkbox {
+  input[type="checkbox"]:checked {
+      background-color: #14226D;
+      border-color: #14226D;
+  }
+
+  label {
+      opacity: 0.79;
+      letter-spacing: 0.14px;
+  }
+}
+
+.btnOuter {
+  border-radius: 12px;
+  background: #0E184D;
+  cursor: pointer;
+
+  p {
+      color: #FFF;
+      /* Text - Normal Bold */
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 22.4px;
+  }
+}
+
+.modalOuter {
+  border-radius: 20px;
+  background: #FFF;
+}
+
+.cardImage {
+  position: absolute;
+  top: 6%;
+  right: 1%;
+}
+
+.hr {
+  color: #BDBDBD;
+}
+
+.cvv {
+  border-radius: 18px;
+  border: 1px solid #BDBDBD;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.defaultOuter {
+  border-radius: 53px;
+  background: rgba(224, 224, 224, 0.32);
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.21px;
+  color: #4F4F4F;
+  width: 130px;
+  cursor: pointer;
+}
+
+.default {
+  background: rgba(37, 201, 141, 0.10) !important;
+  color: var(--green, #25C98D);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.24px;
+  border-radius: 53px;
+  width: 130px;
+}
+
+.greenDotImg {
+  position: absolute;
+  top: 38%;
+  left: 12%;
+}
+
+.btn {
+  border-radius: 12px;
+  background: var(--reject, #F00);
+  max-width: 100px;
+  min-width: 90px;
+  cursor: pointer;
+  height: 33px;
+
+  p {
+      color: #FFF;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22.4px;
+      margin-left: 2%;
+  }
+}
+
+.deleteButton {
+  border-radius: 8px;
+  background: #14226D;
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  border: 2px solid #14226D;
+  line-height: 19.6px;
+}
+
+.noButton {
+  border-radius: 8px;
+  border: 0.5px solid #000;
+  color: var(--grey-1, #333);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.6px;
+  background-color: white;
+}
+
+@media screen and (min-width: 1000px) {
+  .table {
+      text-align: center;
+  }
+}
+
+@media screen and (max-width:760px) {
+  .greenDotImg {
+      left: 8%;
+  }
+}
+
+@media screen and (max-width:580px) {
+  .greenDotImg {
+      left: 5%;
+  }
+}

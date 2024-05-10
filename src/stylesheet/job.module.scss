@@ -1,0 +1,212 @@
+.myJobTitle {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 140%;
+    color: #04081A;
+}
+
+.outerTab {
+    background: #14226D;
+    border-radius: 8px;
+}
+
+.tab {
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: white;
+    cursor: pointer;
+}
+
+.activeTab {
+    background: #FFFFFF;
+    color: #14226D;
+}
+
+.tabMenuBg {
+
+    & p {
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 140%;
+        color: #FFFFFF;
+    }
+}
+
+.activeTabMenuBg {
+
+    background: #FFFFFF;
+    border-radius: 8px;
+
+    & p {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 140%;
+        color: #14226D;
+    }
+}
+
+.completeButton {
+    background: #27AE60 !important;
+}
+
+.cancelJobButton {
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    border: 0;
+    color: #FFFFFF;
+    // padding: 3.5% 7%;
+    padding: 1rem 2rem;
+    border: 1px solid #FF0000;
+    color: #FF0000;
+    background: #FFFFFF;
+}
+
+.hireButton {
+    border: 1px solid #14226D;
+    color: #14226D;
+}
+
+.noButton {
+    min-width: 27%;
+    background: #FF0000 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #FF0000;
+}
+
+.reportProblemTitle {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 122%;
+    color: #1E202B;
+}
+
+.reportProblemDesc {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 150%;
+    color: #1E202B;
+    opacity: 0.8;
+}
+
+.boxShadow1 {
+    box-shadow: 0px 10px 60px rgba(20, 34, 109, 0.04);
+    cursor: pointer;
+}
+
+.boxShadow2 {
+    box-shadow: 0px 10px 60px rgba(20, 34, 109, 0.07);
+    cursor: pointer;
+}
+
+.activeReportLabel {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: -0.0022em;
+    color: #1E202B;
+
+    p {
+        font-weight: 400;
+        font-size: 14px;
+        color: #1E202B;
+        opacity: 0.8;
+    }
+}
+
+.activeReportRadioLabel {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.4px;
+    color: #18181B;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.opacityLabel {
+    opacity: 0.6;
+}
+
+.textareaBorder {
+    // opacity: 0.1;
+    /* Brand black */
+    border: 1px solid #e8e9ee;
+    filter: drop-shadow(0px 10px 60px rgba(0, 0, 0, 0.06));
+    border-radius: 16px;
+}
+
+.textareaBorder2 {
+    border: 1px solid #e8e9ee;
+    border-radius: 16px;
+}
+
+.activeRadio {
+    background: #FFFFFF;
+    /* Primary */
+
+    border: 2px solid #14226D;
+    border-radius: 12px;
+}
+
+.feedbackStars {
+    display: inline-block;
+    color: #ffd700;
+    /* Set the default star color */
+}
+
+.star {
+    cursor: pointer;
+    transition: color 0.2s;
+    color: #e8e9ee;
+}
+
+.active {
+    color: #ffbf00;
+    /* Set the color for active (filled) stars */
+}
+
+.viewJobServices {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #14226D;
+
+    span {
+        color: #333333;
+    }
+}
+
+.viewJobDescriptionTitle {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+    color: #14226D;
+}
+
+.viewJobDescription {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #333333;
+}
+
+.jobMultiImages {
+    object-fit: cover !important;
+    width: 10rem;
+    height: 9rem !important;
+}
+
+.scroll {
+    max-height: 50vh !important;
+    overflow-y: scroll;
+}

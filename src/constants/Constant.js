@@ -98,14 +98,22 @@ export const appMenuItems = [
     IconActive: "/images/logoutActive.png",
   },
 ];
-export const testMenu = [
+export const ClientMenu = [
   {
     id: 1,
     name: "Dashboard",
-    link: "/dashboard",
+    link: "/client-dashboard",
     Icon: "/images/dashboard.png",
     IconActive: "/images/dashboardActive.png",
-  }]
+},
+{
+  id: 2,
+  name: "Payment",
+  link: "/payment-client",
+  Icon: "/images/payment.png",
+  IconActive: "/images/paymentActive.png",
+},
+  ]
 export const TALENT_ROLE = 1;
 // export const routesConfig = {
 //   "/": {

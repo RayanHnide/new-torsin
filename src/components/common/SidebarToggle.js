@@ -5,7 +5,7 @@ import { Container, Image, Modal, Nav } from "react-bootstrap";
  import { FiChevronsLeft,FiChevronsRight } from "react-icons/fi";
  import { useUserAuth } from "../../firebase_setup/auth/UserAuthContext";
 import styles from "../../stylesheet/sidebar.module.scss";
-import { appMenuItems, testMenu } from "../../constants/Constant";
+import { ClientMenu, appMenuItems, testMenu } from "../../constants/Constant";
 import { useDispatch, useSelector } from "react-redux";
 import * as auth from '../../helpers/auth';
 import { setOpen } from "../../store/actions/sidebartoggle";
@@ -17,7 +17,7 @@ const OwnSidebar = ({ children }) => {
     const router = useRouter();
     const { user, logOut } = useUserAuth();
     const menuItem = [...appMenuItems];
-    const testMunu = [...testMenu]
+    const clientMenu = [...ClientMenu]
     const [logoutModal, setLogoutModal] = useState(false);
 
     const toggle = useSelector((Gstate) => Gstate?.SidebarReducer?.toggle)
@@ -189,7 +189,7 @@ const OwnSidebar = ({ children }) => {
       <Accordion.Item eventKey="1">
         <Accordion.Header> Client</Accordion.Header>
         <Accordion.Body>
-        {testMenu.map((item, index) => (
+        {clientMenu.map((item, index) => (
                         <>
                             {index === appMenuItems.length - 1 ? (
                                 <div
@@ -225,7 +225,7 @@ const OwnSidebar = ({ children }) => {
                                     >
                                         <div
                                             className={`d-flex align-items-center ${styles.sidebarItems
-                                            } ${item.name == "Dashboard" && "pt-2"} ${!router.pathname.includes("/dashboard") &&
+                                            } ${item.name == "Dashboard" && "pt-2"} ${!router.pathname.includes("/dashboard-") &&
                                             index == 0 && "my-1"}`}
                                         >
                                             <Image
