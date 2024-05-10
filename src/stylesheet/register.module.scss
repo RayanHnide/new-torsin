@@ -1,0 +1,242 @@
+.agreement {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #BDBDBD;
+
+    & span {
+        color: #0E184D;
+        cursor: pointer;
+    }
+}
+
+.registerButton {
+    padding: 17px 26px;
+    gap: 10px;
+    color: white;
+    width: 133px;
+    height: 56px;
+    left: 263px;
+    border: 0;
+    background: #0E184D;
+    border-radius: 28.5px;
+    // 
+
+    /* heading never used */
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+    /* identical to box height, or 110% */
+
+
+    color: #FFFFFF;
+}
+
+.businessBtn {
+    cursor: pointer;
+    color: #6180f4;
+    padding: 5% 1% !important;
+    background: #dfe6fd;
+    border-radius: 45px;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.businessBtn:hover {
+    background: #14226D;
+    color: white;
+}
+
+.formInput {
+    background: #E8F0FE !important;
+    border: 1px solid #E0E0E0 !important;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    // font-size: 18px ;    
+    color: #333333 !important;
+}
+
+.agreement {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #BDBDBD;
+}
+
+.TnC {
+    font-family: 'Inter', sans-serif;
+    color: #0E184D;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.verifyText {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #6180F4;
+    cursor: pointer;
+    position: absolute;
+    right: 13%;
+    top: 25%;
+}
+
+.verifyTextError {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #6180F4;
+    cursor: pointer;
+    position: absolute;
+    right: 13%;
+    top: 26%;
+}
+
+.verifyEmailText {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #6180F4;
+    cursor: pointer;
+    position: absolute;
+    right: 13%;
+    top: 35%;
+}
+
+.verifyEmailTextError {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #6180F4;
+    cursor: pointer;
+    position: absolute;
+    right: 13%;
+    top: 32%;
+}
+
+.mobileVerificationTitle {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #0E184D;
+}
+
+.mobileVerificationPara {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.modalOuter {
+    width: 33%;
+    max-width: none !important;
+}
+
+.modalBody {
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.imageOtp {
+    margin-top: -7%;
+}
+
+.otpInput {
+    border: 1px solid #d8dbdd;
+    border-radius: 4px;
+    padding: 0px 0px !important;
+    width: 34px !important; //34px
+    height: 40px !important; //40px 
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #0C0900;
+}
+
+.otpLast {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #081614;
+    opacity: 0.8;
+}
+
+.resend {
+    color: #27AE60;
+    cursor: pointer;
+}
+
+.formRelative {
+    position: relative !important;
+}
+
+.eye {
+    position: absolute;
+    right: 12%;
+    top: 24%;
+}
+
+.eyeError {
+    position: absolute;
+    right: 12%;
+    top: 16%;
+}
+
+.formPaddingEnd {
+    padding-right: 29% !important;
+}
+
+.mobileInput {
+    input {
+        // border: 2px solid red;
+        width: 75%;
+        border: 0;
+        background: #E8F0FE !important;
+        border: 1px solid #E0E0E0 !important;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        // font-size: 18px ;    
+        color: #333333 !important;
+        outline: 0;
+    }
+}
+
+@media (max-width:425px) {
+    .TnC {
+        font-size: 12px;
+    }
+}
+
+@media (max-width:375px) {
+    .TnC {
+        font-size: 11px;
+    }
+}

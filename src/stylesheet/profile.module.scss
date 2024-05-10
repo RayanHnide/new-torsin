@@ -1,0 +1,624 @@
+.profileTitle {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #04081a;
+}
+
+.profileCard {
+  border: 1px solid #bdbdbd;
+  border-radius: 18px;
+}
+
+.imageDiv {
+  img {
+    border-radius: 50%;
+  }
+}
+
+.personName {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 31px;
+  color: #333333;
+
+  & span {
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #333333;
+  }
+}
+
+.personDetails {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #5a5a5f;
+}
+
+.deleteJobTitle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  color: #5a5a5f;
+}
+
+.deleteJobDesc {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  /* or 150% */
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #5a5a5f;
+}
+
+.cancelJobButton {
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  border: 0;
+  color: #ffffff;
+  // padding: 3.5% 7%;
+  padding: 1rem 2rem;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  background: #ffffff;
+}
+
+.noBtn {
+  border: 0;
+  background-color: white;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  color: #ff0000;
+}
+
+.editProfile {
+  border: 1px solid #14226d;
+  border-radius: 4px;
+  font-family: "Inter", sans-serif;
+  font-style: medium;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #14226d;
+  cursor: pointer;
+}
+
+.subCardTitle {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  color: #14226d;
+}
+
+.addNewSkills {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: right;
+  color: #14226d;
+  cursor: pointer;
+}
+
+.skillsInnerDiv {
+  background: #ffffff;
+  box-shadow: 0px 10px 60px rgba(20, 34, 109, 0.04);
+  border-radius: 19px;
+
+  & span {
+    border: 2px solid red;
+    border: 1px solid rgba(8, 22, 20, 0.2);
+    border-radius: 100px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    color: #000000;
+    opacity: 0.4;
+  }
+}
+
+.oddServices {
+  background: #ffffff;
+  box-shadow: 0px 10px 60px rgba(20, 34, 109, 0.04);
+  border-radius: 19px;
+  cursor: pointer;
+}
+
+.evenServices {
+  background: #f5f5f5;
+  box-shadow: 0px 10px 60px rgba(20, 34, 109, 0.04);
+  border-radius: 19px;
+  cursor: pointer;
+}
+
+.servicesTitle {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #1e202b;
+}
+
+.servicesDetails {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 150%;
+  color: #1e202b;
+  opacity: 0.8;
+}
+
+.servicesRates {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 150%;
+  color: #1e202b;
+  opacity: 0.8;
+}
+
+.servicesViewMore {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 150%;
+  color: #14226d;
+}
+
+.portfolioVideoTitle {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+
+.videoDiv {
+  background: #ffffff;
+  box-shadow: 0px 10px 60px rgba(20, 34, 109, 0.04);
+  border-radius: 19px;
+
+  & img {
+    box-shadow: 0px 9.17793px 55.0676px rgba(20, 34, 109, 0.04);
+    border-radius: 9.17793px;
+  }
+}
+
+.video {
+  background: #000000;
+  opacity: 0.93;
+  border-radius: 10px;
+}
+
+.profileModalOuter {
+  width: 75%;
+  max-width: none !important;
+}
+
+.profileModalContent {
+  background: #ffffff;
+  border-radius: 22px;
+}
+
+.skillsModalContent {
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.addSkillsTitle {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #14226d;
+}
+
+.skillsPara {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #1e202b;
+  opacity: 0.8;
+}
+
+.skillsLabel {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #4f4f4f;
+}
+
+.skillsFormInput {
+  background: #ffffff;
+  border: 1px solid #bdbdbd;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  // color: #828282;
+  color: #333333;
+}
+
+.skillsAddButton {
+  padding: 16px 80px;
+  background: #0e184d;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  border: 0;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  color: #ffffff;
+}
+
+.chargeOption {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #333333;
+}
+
+.skillsFormInput1 {
+  & option {
+    border: 2px solid red !important;
+  }
+}
+
+.imageContainer {
+  img {
+    border-radius: 50%;
+  }
+}
+
+.genderLabel {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  // line-height: 20px;
+  color: #4f4f4f;
+}
+
+.servicesFirstLine {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #1e202b;
+  opacity: 0.8;
+}
+
+.servicesPortfolioTitle {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+
+.servicesModalOuter {
+  width: 78%;
+  max-width: none !important;
+}
+
+.imageDiv {
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+}
+
+.imageDiv img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.editIcon {
+  cursor: pointer;
+  position: absolute;
+  bottom: 7%;
+  left: 3.5rem;
+  z-index: 2;
+}
+
+.editIcon1 {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0rem;
+  padding: 4rem;
+  border-radius: 50%;
+  background: linear-gradient(
+    360deg,
+    #000000 0%,
+    rgba(0, 0, 0, 0) 50%
+  ) !important;
+}
+
+.userProfile {
+  border-radius: 50%;
+  width: 14rem;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.iconCross {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  cursor: pointer;
+  padding: 1px;
+}
+
+.viewServicesImage {
+  object-fit: cover !important;
+  width: 30%;
+  height: 9rem !important;
+}
+
+.uploadImageDiv {
+  background: #ebefff;
+  border: 0.917793px dashed #14226d;
+  box-shadow: 0px 9.17793px 55.0676px rgba(20, 34, 109, 0.04);
+  border-radius: 9.17793px;
+  // width: 114px;
+  width: 100%;
+  // height: 140px;
+  height: 9rem;
+}
+
+.clickHere {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 9.17793px;
+  line-height: 20px;
+  letter-spacing: 0.002em;
+  color: #1e202b;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.addServiceImage {
+  height: 8.9rem;
+  margin-top: 8%;
+  object-fit: cover;
+  width: 100%;
+  // max-width: 120%;
+}
+
+.addServiceImage1 {
+  height: 8.9rem;
+  object-fit: cover;
+  width: 100%;
+  // max-width: 120%;
+  cursor: pointer;
+}
+
+.servicesImageBox {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.imgWidth {
+  object-fit: cover !important;
+  width: 48%;
+  // height: 9rem !important;
+}
+
+.sliderImage {
+  object-fit: cover !important;
+  width: 100%;
+  height: 10rem !important;
+}
+
+.formInputColor {
+  color: #828282;
+}
+
+.sizeDiv {
+  height: 205px;
+}
+
+.nextButton {
+  // padding: 16px 80px;
+  // width: 275px;
+  width: 17.188rem;
+  background: #14226d;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  color: #ffffff;
+  border: 0;
+}
+
+.outerBox {
+  border-radius: 18px;
+  border: 1px solid var(--grey-4, #bdbdbd);
+  background: #f9fbff;
+}
+
+.optionsOuter {
+  border-radius: 12px;
+  border: 1px solid var(--color-grey-4, #14226d);
+  background: var(--color-white, #fff);
+}
+
+.optionsMenu {
+  color: var(--grey-3, #14226d);
+  cursor: pointer;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.addSkillOuter {
+  border-radius: 100px;
+  border: 1px solid var(--primary, #14226d);
+}
+
+.skills {
+  color: var(--primary, #14226d);
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  /* 150% */
+  letter-spacing: 0.12px;
+}
+
+.crossImage {
+  position: absolute;
+  right: 2%;
+  top: 60%;
+}
+
+.crossImage1 {
+  position: absolute;
+  right: 3%;
+  top: 49.5%;
+}
+
+.resetEye {
+  position: absolute;
+  right: 3%;
+  top: 23%;
+}
+
+.resetEye1 {
+  position: absolute;
+  right: 3%;
+  top: 18%;
+}
+
+.borderDanger {
+  border: 1px solid #dc3545;
+}
+.videoImg {
+  width: 100%;
+  max-width: 290px;
+  height: 150px;
+  border-radius: 20px;
+  box-shadow: 0px 9.17793px 55.06757px 0px rgba(20, 34, 109, 0.04);
+  object-fit: cover;
+}
+.uploadImg {
+  width: 100%;
+  max-width: 90px;
+  height: 140px;
+  border-radius: 20px;
+  box-shadow: 0px 9.17793px 55.06757px 0px rgba(20, 34, 109, 0.04);
+  object-fit: cover;
+}
+.uploadImg1 {
+  width: 100%;
+  max-width: 330px;
+  height: 250px;
+  border-radius: 20px;
+  box-shadow: 0px 9.17793px 55.06757px 0px rgba(20, 34, 109, 0.04);
+  // object-fit: cover;
+}
+.videoImg1 {
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+  border-radius: 20px;
+  box-shadow: 0px 9.17793px 55.06757px 0px rgba(20, 34, 109, 0.04);
+  object-fit: cover;
+}
+.uploadWidth {
+  border-radius: 10px;
+  width: 100%;
+  max-width: 450px;
+  height: 250px;
+}
+.uploadBtn {
+  border-radius: 12px;
+  background: #0e184d !important;
+  border: none !important;
+  width: 100%;
+  max-width: 336px;
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22.4px;
+}
+.search {
+  height: 25vh;
+  overflow-y: scroll;
+}
+.searchImg {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+.closeIcon {
+  position: absolute;
+  right: 4%;
+  top: 4%;
+  cursor: pointer;
+  font-size: 30px;
+}
+// .servicesNav {
+//     position: sticky;
+//     top: 0;
+//     z-index: 5;
+//     background: #F9FBFF;
+//     padding: 1.4rem 1rem 0.3rem 1rem;
+// }
+
+// .marginTop {
+//     margin-top: 1rem;
+//     max-height: 348px;
+//     overflow-y: scroll;
+// }
+
+// .marginTop::-webkit-scrollbar {
+//     display: none;
+// }

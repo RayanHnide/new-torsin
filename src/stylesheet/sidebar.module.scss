@@ -1,0 +1,163 @@
+.sidebar {
+    padding-top: 2px;
+    position: fixed;
+    // padding-top: 1%;
+    left: 0;
+    height: 100%;
+    width: 20px !important;
+    // width: 17.6%;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 7;
+}
+
+.sidebarItems {
+    cursor: pointer;
+    padding: 3.6% 0;
+}
+
+.sidebarItemsName {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 0.02em;
+    color: #4F4F4F;
+}
+
+.menuItemActive {
+    background: #14226D;
+    padding: 3px 3px 3px 0;
+
+    .sidebarItemsName {
+        color: white;
+        font-weight: 550;
+    }
+}
+
+.sidebarOuter {
+    position: fixed;
+    // position: absolute;
+    top: 460px;
+}
+
+.log {
+    top: 445px;
+}
+
+.confirmLine1 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #5A5A5F;
+}
+
+.confirmLine2 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #5A5A5F;
+}
+
+.cancelButton {
+    border: 1px solid #14226D;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-style: medium;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.02em;
+    color: #14226D;
+    background: white;
+}
+
+.logoutButton {
+    background: #14226D;
+    border: 1px solid #14226D;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-style: medium;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+}
+
+// .icon {
+//     position: absolute;
+//     top: 3%;
+//     right: -5%;
+//     background: white;
+//     border-radius: 50%;
+//     cursor: pointer;
+// }
+
+.mainBoxsideBar {
+    position: fixed;
+    padding-left: 0 !important;
+    z-index: 7;
+}
+
+.icon {
+    position: absolute;
+    top: 1%;
+    right: -5%;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.iconR {
+    position: absolute;
+    top: 1%;
+    right: -20%;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.sidebar .top_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // padding: 10px;
+}
+
+.link {
+    // padding: 10px;
+    cursor: pointer;
+}
+
+.link.active {
+    background-color: #ddd;
+}
+
+.linkContent {
+    display: flex;
+    align-items: center;
+    // padding: 10px;
+}
+
+.linkContent .sidebarItemsName {
+    margin-left: 10px;
+}
+
+.sidebarIcon {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}

@@ -1,0 +1,107 @@
+.fontFamily {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+.queryTitle {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #1E202B;
+}
+
+.queryCards {
+    cursor: pointer;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 60px rgba(20, 34, 109, 0.04);
+    border-radius: 19px;
+}
+
+.darkCards {
+    background: #F5F5F5;
+}
+
+.hashCode {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333;
+}
+
+.queryTitle {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 25px;
+    color: #333333;
+}
+
+.queryDetails {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 158.5%;
+    color: #1E202B;
+    opacity: 0.8;
+}
+
+.duration {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #1E202B;
+    opacity: 0.6;
+}
+
+.status {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.viewOuter {
+    border-radius: 8px;
+    background: var(--light-version-neutral, #FFF);
+}
+
+.userTitle {
+    color: #5C5C5C;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.2px;
+}
+
+.userDetail {
+    opacity: 0.8;
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.2px;
+}
+
+.jobDesc {
+    color: var(--grey-1, #333);
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    opacity: 0.8;
+}
+
+.desc {
+    color: var(--grey-1, #333);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    /* 112.5% */
+    letter-spacing: 0.16px;
+    opacity: 0.8;
+}

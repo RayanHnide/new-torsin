@@ -1,0 +1,30 @@
+.view {
+  color: var(--Sucess, #0036FF);
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 158.5%;
+}
+
+.successText {
+  color: var(--Agree, #27AE60);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 158.5%;
+  /* 22.19px */
+  opacity: 0.8;
+}
+
+.pendingText {
+  color: #FFB800;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 158.5%;
+  /* 22.19px */
+  opacity: 0.8;
+}

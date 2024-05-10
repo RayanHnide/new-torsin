@@ -1,0 +1,213 @@
+.myJobsTitle {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #04081A;
+}
+
+.tabsOuter {
+    background: #14226D;
+    border-radius: 8px;
+}
+
+.tab {
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: white;
+    cursor: pointer;
+}
+
+.activeTab {
+    background: #FFFFFF;
+    color: #14226D;
+}
+
+.viewJobNameTitle {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 110%;
+    color: #14226D;
+}
+
+.viewJobServices {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #14226D;
+
+    span {
+        color: #333333;
+    }
+}
+
+.viewJobDescriptionTitle {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+    color: #14226D;
+}
+
+.viewJobDescription {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #333333;
+
+}
+
+.cardsOuter {
+    background: #FFFFFF;
+    border-radius: 19px;
+    box-shadow: 0px 10px 60px rgba(20, 34, 109, 0.04);
+}
+
+.jobName {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: #1E202B;
+}
+
+.email {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #1E202B;
+}
+
+.createButton {
+    border: 0;
+    cursor: pointer;
+    background: #14226D;
+    border-radius: 6px;
+}
+
+.archivedButton {
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #14226D;
+}
+
+.newContractTitle {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 126%;
+    color: #14226D;
+}
+
+.addMilestoneBtn {
+    margin-top: -25px;
+    text-align: right;
+}
+
+.milestoneBoxOuter {
+    background: #FFFFFF;
+    border: 1px solid #BDBDBD;
+    border-radius: 12px;
+}
+
+.receivePrice {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 65%;
+    color: #14226D;
+}
+
+.modalTitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 98%;
+    color: #000000;
+}
+
+.selectColor .opt {
+    color: red !important;
+    visibility: hidden;
+}
+
+.menuList {
+    position: absolute;
+    right: -1.2rem;
+    background: #FFFFFF;
+    border-radius: 6px;
+    z-index: 1;
+}
+
+.editBtn {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #14226D;
+    cursor: pointer;
+}
+
+.noBtn {
+    border: 0;
+    background-color: white;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #FF0000;
+}
+
+.cancelJobButton {
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    border: 0;
+    color: #FFFFFF;
+    // padding: 3.5% 7%;
+    padding: 1rem 2rem;
+    border: 1px solid #FF0000;
+    color: #FF0000;
+    background: #FFFFFF;
+}
+
+
+@media screen and (max-width : 1800px) {
+    .tabsOuter {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        justify-content: space-around !important;
+    }
+
+    .tab {
+        padding-left: 9% !important;
+        padding-right: 9% !important;
+    }
+}
+
+@media screen and (max-width : 600px) {
+
+    .tab,
+    .createButton {
+        padding-left: 3% !important;
+        padding-right: 3% !important;
+    }
+}
+
+
+@media screen and (max-width : 900px) {
+    .btnGroup {
+        justify-content: space-between !important;
+    }
+}
+
+@media screen and (max-width : 780px) and (min-width:700px) {
+    .createButton {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+}
