@@ -1,4 +1,4 @@
-import API from "../../helpers/api/index";
+import API from "../../../helpers/api/index";
 
 export function getAdminServices(params) {
     return (dispatch) => {

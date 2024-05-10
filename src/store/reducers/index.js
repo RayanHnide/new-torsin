@@ -13,12 +13,13 @@ import SupportReducers from './support';
 import RatingReducers from './ratings';
 import SidebarReducer from './sidebartoggle';
 import PublishJobReducers from './publishJob';
-
+import DashboardReducersClient from './client-reducers/client-dashboard';
+ 
 const appReducer = combineReducers({
     ProfileReducers,
     DashboardReducers,
-    
-    TalentReducers,
+    DashboardReducersClient,
+     TalentReducers,
     PublishJobReducers,
     ChatReducers,
     ProposalReducers,

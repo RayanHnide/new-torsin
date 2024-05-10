@@ -6,7 +6,7 @@ export default function TalentProposals({ style, styles, handleProposalBackIconC
         <>
             <div className={`d-flex justify-content-start align-items-center mb-1 ${style.publishNav}`}>
                 <span className='me-2' role='button'>
-                    <IconArrowLeft onClick={handleProposalBackIconClick} />
+                    {/* <IconArrowLeft onClick={handleProposalBackIconClick} /> */}
                 </span>
                 <span className={`${styles.allProposalsTitle} mx-2`}>
                     Proposals

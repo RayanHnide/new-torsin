@@ -21,17 +21,21 @@ export default function Dashboard() {
     const dispatch = useDispatch();
 
     const [proposedJobs, proposedJobsDetails, topRatedTalents] = useSelector((Gstate) => [
-        Gstate?.DashboardReducers?.proposedJobs,
-        Gstate?.DashboardReducers?.proposedJobsDetails,
-        Gstate?.DashboardReducers?.topRatedTalents
-    ])
+       
+        Gstate?.DashboardReducersClient?.proposedJobs,
+        Gstate?.DashboardReducersClient?.proposedJobsDetails,
+        Gstate?.DashboardReducersClient?.topRatedTalents,
+
+    ] );
+    
+     
 
     useEffect(() => {
         dispatch(getTopRatedTalents())
     }, [topRatedTalents?.length])
 
-    const [profilelist] = useSelector((Gstate) => [Gstate?.ProfileReducers?.profilelist]);
-
+    const [profilelist] = useSelector((Gstate) => [Gstate?.ProfileReducers?.profilelist, console.log(Gstate),]);
+    
     useEffect(() => {
         dispatch(getProposedJobs());
     }, [proposedJobs?.length])
@@ -149,7 +153,7 @@ export default function Dashboard() {
 
                                         <Col md={12}>
                                             <p className={`${styles.jobTitlePersonName} mb-2`}>
-                                                {item?.jobName}
+                                                {item?.jobName}   
                                             </p>
                                             <p className={`${style.jobDescription} mt-0 mb-2`}>
                                                 {item?.jobDescription}
@@ -167,10 +171,10 @@ export default function Dashboard() {
 
                     <div className={`${style.publishNav2}`}>
                         <div className='mt-3 d-flex justify-content-between align-items-center'>
-                            <p className={`${styles.proposalsTitle} my-0`}>Top Rated Talents ss</p>
+                            <p className={`${styles.proposalsTitle} my-0`}>Top Rated Talents </p>
                             <p
                                 className={`${styles.viewMore} my-0`}
-                                onClick={() => router.push(`dashboard/all-talents`)}
+                                onClick={() => router.push(`client-dashboard/all-talents`)}
                             >
                                 View more
                             </p>
@@ -178,7 +182,12 @@ export default function Dashboard() {
                     </div>
                     
                     <Container className={`${styles.body}`}>
-
+                         <button onClick={()=>{
+                             console.log(topRatedTalents);
+                            
+                         }}>
+                            asdasdasd
+                         </button>
                         <Row className='mx-1 mb-3'>
                             {
                                 topRatedTalents?.slice(0, 5)?.map((item, index) => (

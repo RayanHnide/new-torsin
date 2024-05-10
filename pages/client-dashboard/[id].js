@@ -5,11 +5,11 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { decodeData } from "../../src/helpers/auth";
 
-const AllTalents = dynamic(() => import('../../src/components/dashboard/AllTalents'), {
+const AllTalents = dynamic(() => import('../../src/components/client-dashboard/AllTalents'), {
     loading: () => <LazyLoader />
 })
 
-const ViewTalent = dynamic(() => import('../../src/components/dashboard/ViewTalent'), {
+const ViewTalent = dynamic(() => import('../../src/components/client-dashboard/AllTalents'), {
     loading: () => <LazyLoader />
 })
 

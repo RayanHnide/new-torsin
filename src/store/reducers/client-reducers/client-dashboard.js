@@ -6,7 +6,7 @@ const INITIAL_STATE = {
     searchTalentList: []
 };
 
-const DashboardReducers = (state = INITIAL_STATE, action) => {
+const DashboardReducersClient = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case "REQUEST_PROPOSAL_TALENT_DETAILS":
             return {
@@ -57,4 +57,4 @@ const DashboardReducers = (state = INITIAL_STATE, action) => {
     }
 };
 
-export default DashboardReducers;
+export default DashboardReducersClient;

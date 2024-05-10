@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import ProfileReducers from './profile';
 import PublishJobReducers from './publishJob';
-import DashboardReducers from './dashboard';
+import DashboardReducers from './client-dashboard';
 import ChatReducers from './chat';
 import ContractReducers from './contract';
 import PaymentReducers from './Payment';

@@ -1,5 +1,5 @@
-import API from "../../helpers/api";
-import { database } from "../../firebase/firebase"
+import API from "../../../helpers/api";
+import { database } from "../../../firebase_setup/firebase"
 import { ref, onValue } from "firebase/database"
 
 export const getAcceptedProposalJobs = (id) => async (dispatch) => {

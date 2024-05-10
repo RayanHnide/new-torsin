@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Image } from 'react-bootstrap';
-import { IconArrowLeft, IconSearch } from 'tabler-icons';
+// import { IconArrowLeft, IconSearch } from 'tabler-icons';
 import styles from "../../stylesheet/dashboard.module.scss";
 import style from "../../stylesheet/publish.module.scss"
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { encodeData } from '../../helpers/auth';
-import { getTopRatedTalents, searchTopRatedTalents } from '../../store/actions/dashboard';
+import { getTopRatedTalents, searchTopRatedTalents } from '../../store/actions/client-action/dashboard';
 import LazyLoader from '../common/LazyLoader';
 import { Oval } from 'react-loader-spinner';
 
@@ -16,8 +16,8 @@ export default function AllTalents() {
     const dispatch = useDispatch();
 
     const [topRatedTalents, searchTalentList] = useSelector((Gstate) => [
-        Gstate?.DashboardReducers?.topRatedTalents,
-        Gstate?.DashboardReducers?.searchTalentList
+        Gstate?.DashboardReducersClient?.topRatedTalents,
+        Gstate?.DashboardReducersClient?.searchTalentList
     ])
 
     const [search, setSearch] = useState(null);
@@ -47,7 +47,7 @@ export default function AllTalents() {
             <Row className={`d-flex justify-content-between align-items-center ${style.publishNav}`}>
                 <Col className='d-flex justify-content-start align-items-center'>
                     <span className='me-2' role='button'>
-                        <IconArrowLeft onClick={() => router.back()} />
+                        {/* <IconArrowLeft onClick={() => router.back()} /> */}
                     </span>
                     <span className={`${styles.dashboardTitle} mx-2`}>
                         {!search ?
@@ -71,11 +71,11 @@ export default function AllTalents() {
                             setLoading(true)
                         }}
                     />
-                    <IconSearch
+                    {/* <IconSearch
                         size={20}
                         color='gray'
                         className={`${styles.searchIcon}`}
-                    />
+                    /> */}
                 </Col>
             </Row>
             <Container className={`${styles.body}`}>

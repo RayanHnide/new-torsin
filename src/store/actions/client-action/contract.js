@@ -1,4 +1,4 @@
-import API from "../../helpers/api/index";
+import API from "../../../helpers/api/index";
 
 export function getAllContractsList() {
     return (dispatch) => {

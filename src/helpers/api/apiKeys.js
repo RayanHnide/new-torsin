@@ -49,7 +49,7 @@ const apiKeys = {
 
   
    //top rated talents
-   topRatedTalents: 'talent/top/rating',
+   topRatedTalents: "talent/top/rating",
   //ratings
   createRating: "common/rating/create",
   getRating: "common/rating/get",
