@@ -34,11 +34,7 @@ export default function Dashboard() {
         dispatch(getTopRatedTalents())
     }, [topRatedTalents?.length])
 
-<<<<<<< HEAD
-    const [profilelist] = useSelector((Gstate) => [Gstate?.ProfileReducers?.profilelist]);
-=======
     const [profilelist] = useSelector((Gstate) => [Gstate?.ProfileReducers?.profilelist, console.log(Gstate),]);
->>>>>>> 408228e (update)
     
     useEffect(() => {
         dispatch(getProposedJobs());
@@ -186,17 +182,12 @@ export default function Dashboard() {
                     </div>
                     
                     <Container className={`${styles.body}`}>
-<<<<<<< HEAD
-                         
-                          
-=======
                          <button onClick={()=>{
                              console.log(topRatedTalents);
                             
                          }}>
                             asdasdasd
                          </button>
->>>>>>> 408228e (update)
                         <Row className='mx-1 mb-3'>
                             {
                                 topRatedTalents?.slice(0, 5)?.map((item, index) => (

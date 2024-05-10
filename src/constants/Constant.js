@@ -112,7 +112,6 @@ export const ClientMenu = [
   Icon: "/images/contracts.png",
   IconActive: "/images/contractsActive.png",
 },
->>>>>>> 408228e (update)
   ]
 
   export const CommonMenu = [
