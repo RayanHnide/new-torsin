@@ -115,7 +115,7 @@ const OwnSidebar = ({ children }) => {
 
         <Accordion defaultActiveKey="0">
        
-       <Accordion.Item eventKey="1">
+       <Accordion.Item  >
          <Accordion.Header> Talent</Accordion.Header>
          <Accordion.Body>
          {menuItem.map((item, index) => (
@@ -186,7 +186,7 @@ const OwnSidebar = ({ children }) => {
                      
                     <Accordion defaultActiveKey="0">
        
-      <Accordion.Item eventKey="1">
+      <Accordion.Item >
         <Accordion.Header> Client</Accordion.Header>
         <Accordion.Body>
         {clientMenu.map((item, index) => (

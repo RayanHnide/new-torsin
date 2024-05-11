@@ -4,6 +4,7 @@
     z-index: 100;
     box-shadow: -2px 2px 33px -16px grey;
     background: white;
+    backdrop-filter: blur(200px) !important ; /* Changed to blur and made it bluer */
 }
 
 .torsinLogo {
@@ -23,14 +24,19 @@
     line-height: 20px;
     letter-spacing: 0.007em;
     color: #4F4F4F;
+     
+    padding: 20px;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 .pageContentWrapper {
     padding: 0 1% 0 2%;
     background: #F9FBFF;
-    min-height: 88.8vh;
+    min-height: 89.3vh;
     font-family: 'Inter', sans-serif;
     font-style: normal;
+    
 }
 
 .mainBodyWrapper {
@@ -43,27 +49,5 @@
     height: 3rem;
     object-fit: cover;
     overflow: hidden;
-}
-
-.shortWidth {
-    width: 70px;
-}
-
-@media screen and (max-width: 460px) {
-    .toggleMargin {
-        width: 0px !important;
-    }
-}
-
-.profileSettingsMargin {
-    width: 210px;
-}
-
-.toggleMargin {
-    // width: 285px;
-}
-
-
-.openMargin {
-    width: 80px;
+    
 }
