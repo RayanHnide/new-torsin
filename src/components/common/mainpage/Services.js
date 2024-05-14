@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllServices, getAllServicesClient } from '../../../store/actions/profile';
 import { encodeData } from '../../../helpers/auth';
 import { useRouter } from 'next/router';
+import {log} from "next/dist/server/typescript/utils";
 
 export default function Services() {
     
@@ -28,7 +29,9 @@ export default function Services() {
 
     const [allServices1, searchTalentList] = useSelector((Gstate) => [
         Gstate?.PublishJobReducers?.allServices,
-        Gstate?.DashboardReducers?.searchTalentList
+        Gstate?.DashboardReducers?.searchTalentList,
+        console.log(Gstate?.PublishJobReducers?.allServices,)
+
     ]);
 
     // dispatch(searchTopRatedTalents(search))
@@ -37,7 +40,7 @@ export default function Services() {
         <>
             <Container>
                 <p className={`${styles.guestHeading}`}>
-                    You need it, we've got it
+                    You need it, we've got it  (talient)
                 </p>
             </Container>
             <Container className={`d-flex flex-wrap`}>
@@ -49,8 +52,9 @@ export default function Services() {
                             className={`${styles.serviceName} m-3 px-5 py-4 cursor-pointer`}
                             onClick={() => router.push(`/guest/job?data=${encodeData(item?.serviceName)}`)}
                         >
+
                             {
-                                item?.serviceName
+                                item?.serviceName  
                             }
                         </div>
                     ))
@@ -60,7 +64,7 @@ export default function Services() {
 
             <Container>
                 <p className={`${styles.guestHeading}`}>
-                    You need it, we've got it
+                    You need it, we've got it (Client)
                 </p>
             </Container>
             

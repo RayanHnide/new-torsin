@@ -49,6 +49,7 @@ export default function Profile() {
       Gstate?.ProfileReducers?.skillsList,
       Gstate?.ProfileReducers?.servicesList,
       Gstate?.ProfileReducers?.uploadData,
+     
     ]
   );
 

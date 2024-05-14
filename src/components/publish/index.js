@@ -27,7 +27,8 @@ export default function Home({ query }) {
 
     const [publishedJobs, adminServices] = useSelector((Gstate) => [
         Gstate?.PublishJobReducers?.publishedJobs,
-        Gstate?.PublishJobReducers?.adminServices
+        Gstate?.PublishJobReducers?.adminServices,
+
     ])
 
     useEffect(() => {
@@ -184,8 +185,8 @@ export default function Home({ query }) {
                                 :
                                 <div className='text-center mt-5'>
                                     <p className={`${style1.viewJobPersonName} text-dark mb-0 mt-5 pt-5`}>
-                                        No Published jobs
-                                    </p>
+                                        No Published jobs   
+                                    </p>  
                                 </div>
                             }
                         </Row>

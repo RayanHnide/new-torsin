@@ -55,6 +55,8 @@ export default function Contracts() {
         Gstate?.ContractReducers?.contractDetails,
         Gstate?.ChatReducers?.acceptedProposalJobs,
         Gstate?.ContractReducers?.adminPercentage,
+
+
     ])
 
     useEffect(() => {
@@ -66,7 +68,9 @@ export default function Contracts() {
     }, [publishedJobs?.length, createContract])
 
     useEffect(() => {
+
         createContract && dispatch(getAcceptedProposalJobs())
+
     }, [acceptedProposalJobs?.length, createContract])
 
     useEffect(() => {

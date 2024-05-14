@@ -25,7 +25,7 @@ const SidebarComponent = memo((props) => {
 
   return (
       <>
-        <Container>
+        <Container  >
           <Modal centered show={logoutModal} onHide={() => setLogoutModal(false)} backdrop="static">
             <Modal.Body>
               <div className="mx-4 px-3 text-center pt-3 pb-2">

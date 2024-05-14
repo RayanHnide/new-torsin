@@ -112,8 +112,8 @@ export default function ViewJob({ job, styles, handleIconClick, handleDeleteJob,
         slidesToShow: 1.27,
         slidesToScroll: 1,
         arrow: false,
-        prevArrow: <IconChevronLeft color='grey' />,
-        nextArrow: <IconChevronRight color='grey' />,
+        // prevArrow: <IconChevronLeft color='grey' />,
+        // nextArrow: <IconChevronRight color='grey' />,
         // afterChange: current => setSlideNumber(current)
     };
 

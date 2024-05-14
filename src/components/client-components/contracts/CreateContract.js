@@ -15,7 +15,8 @@ export default function CreateContract({ percentage, style, style1, contractDeta
  
     const { contract_details, milestone } = contractDetails;
     const contractId = contractDetails?.contractId
-
+    
+  
     const initial = {
         talentId: (edit && contractDetails && contractDetails.talentId) || null,
         projectId: (edit && contractDetails && contractDetails.jobId) || null,
@@ -284,6 +285,7 @@ export default function CreateContract({ percentage, style, style1, contractDeta
         return arr.findIndex(obj => obj.talentEmail === item.talentEmail) === index;
     });
 
+
     const handleEditBackIcon = () => {
         setDetailsId(null);
         setEdit(null);
@@ -303,6 +305,7 @@ export default function CreateContract({ percentage, style, style1, contractDeta
                         <p className={`${style.addLocationTitle} text-dark px-4`}>
                             Your contract has been sent successfully.We will notify you once
                             <span className='mx-1 fw-bold'>
+
                                 {mailList?.find(item => item?.talentId == data?.talentId)?.fullName}
                             </span>
                             accepts it.
@@ -346,12 +349,14 @@ export default function CreateContract({ percentage, style, style1, contractDeta
                                 disabled={edit || queryData}
                                 isInvalid={showErrors && Validation.empty(talentId)}
                             >
-                                <option hidden>
+                                <option >
                                     Select
                                 </option>
+
+                                 
                                 {
                                     uniqueData?.map((item, index) => (
-                                        <option key={index} value={item?.talentId} className={`${style.chargeOption}`}>{item?.talentEmail}</option>
+                                        <option key={index} value={item?.talentId} className={`${style.chargeOption}`}>ss</option>
                                     ))
                                 }
                             </Form.Control>

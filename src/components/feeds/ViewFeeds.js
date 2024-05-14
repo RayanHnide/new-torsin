@@ -4,6 +4,8 @@ import jobStyle from '../../stylesheet/jobs.module.scss';
 import styles from '../../stylesheet/feeds.module.scss';
 import { useRouter } from 'next/router';
 // import { IconArrowLeft } from 'tabler-icons';
+import { FaArrowLeft } from "react-icons/fa6";
+
 import { Container } from 'react-bootstrap';
 
 export default function ViewFeeds({ query }) {
@@ -15,7 +17,7 @@ export default function ViewFeeds({ query }) {
         <>
             <div className={`d-flex justify-content-start align-items-center ${dashboardStyle.publishNav} pt-4 mb-3`}>
                 <span className='me-3' role='button'>
-                    {/* <IconArrowLeft onClick={() => router.back()} /> */}
+                     <FaArrowLeft style={{cursor:'pointer'}} onClick={() => router.back()} />
                 </span>
                 <span className={`${jobStyle.myJobsTitle} ms-1`}>
                     View {

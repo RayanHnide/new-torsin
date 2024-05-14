@@ -11,7 +11,7 @@ export default function ReceivedProposal({ style, styles, handleReceivedProposal
         <>
             <div className={`d-flex justify-content-start align-items-center ${style.publishNav} ${styles.proposalNavPadding}`}>
                 <span className='me-2' role='button'>
-                    <IconArrowLeft onClick={handleReceivedProposalBackIcon} />
+                    {/*<IconArrowLeft onClick={handleReceivedProposalBackIcon} />*/}
                 </span>
                 <span className={`${styles.allProposalsTitle} mx-2`}>
                     Proposals Recieved

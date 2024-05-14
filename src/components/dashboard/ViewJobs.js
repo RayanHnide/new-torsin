@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Image } from 'react-bootstrap'
 import Moment from 'react-moment';
+import {FaArrowLeft} from "react-icons/fa6";
 // import { IconArrowLeft } from 'tabler-icons'
 
 export default function ViewJobs({ job, styles, handleIconClick, handleApply }) {
@@ -11,11 +12,12 @@ export default function ViewJobs({ job, styles, handleIconClick, handleApply }) 
         <>
             <div className={`d-flex justify-content-start align-items-center pt-4 mb-2 ${styles.publishNav}`}>
                 <span className='me-3' role='button'>
-                    <IconArrowLeft onClick={handleIconClick} />
+                     <FaArrowLeft style={{cursor:'pointer'}} onClick={() => router.back()} />
                 </span>
                 <span className={`${styles.viewJob} mx-2`}>
                     View Job
                 </span>
+
                 {/* <span className='mb-1'>
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-math-greater" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

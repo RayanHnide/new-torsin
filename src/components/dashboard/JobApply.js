@@ -80,6 +80,7 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
     }
 
     const handleUpload = async (index) => {
+        
         const selectedFile = selectedServiceImages[index];
 
         if (!selectedFile) {
@@ -132,8 +133,14 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
             userProposal.video = videoUrl;
             userProposal.job = applyJob.id;
             userProposal.charge = userProposal.charge ? userProposal.charge : null;
-            API.apiPost("postJobProposal", (userProposal))
+
+            console.log((userProposal))
+            API.apiPost("postJobProposal", (userProposal),{
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2MjAwODA0LCJpYXQiOjE3MTU1OTYwMDQsImp0aSI6IjFmYzE4OTQ1YTkzMzRlZDg5NjlkNWE5OGJlYWUxZmFjIiwidXNlcl9pZCI6MjUxfQ.v2LLofBkZhexU0deVA0BmMXwP3_0kJ2C-yRE1-DC9tk'
+            })
                 .then((response) => {
+
                     if (response) {
                         toast.success(response?.data?.response?.message?.successMessage, {
                             position: "top-right",
@@ -168,7 +175,7 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
                 
                     <div className={`d-flex justify-content-start align-items-center py-4 mb-2 ${styles.publishNav}`}>
                         <span className='me-3' role='button'>
-                            <IconArrowLeft onClick={handleApplyJobBackIconClick} />
+                            {/*<IconArrowLeft onClick={handleApplyJobBackIconClick} />*/}
                         </span>
                         <span className={`${styles.viewJob} mx-2`}>
                             {
@@ -333,11 +340,12 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
                                                 />
                                                 :
                                                 <div className={`${style.videoDiv} d-flex justify-content-center align-items-center py-3 position-relative`}>
-                                                    <IconLetterX
-                                                        size={17}
-                                                        className={`${style.iconCross}`}
-                                                        onClick={handleVideoChange}
-                                                    />
+                                                    {/*<IconLetterX*/}
+                                                    {/*    size={17}*/}
+                                                    {/*    className={`${style.iconCross}`}*/}
+                                                    {/*    onClick={handleVideoChange}*/}
+                                                    {/*/>*/}
+                                                    Change
                                                     <video width="305" height="150" controls className={`${style.video}`}>
                                                         <source src={videoUrl} type="video/mp4" />
                                                     </video>

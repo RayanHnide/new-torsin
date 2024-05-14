@@ -3,7 +3,7 @@ import API from "../../../helpers/api/index";
 export function getAllContractsList() {
     return (dispatch) => {
         dispatch({ type: 'REQUEST_ALL_CONTRACT_LIST' });
-        API.apiGet('getContractList')
+        API.apiGet('getContractListClient')
             .then((response) => {
                 if (response.data) {
                     dispatch({ type: `SET_ALL_CONTRACT_LIST`, payload: response?.data?.response?.data });
@@ -18,7 +18,7 @@ export function getAllContractsList() {
 export function getContractsList(params) {
     return (dispatch) => {
         dispatch({ type: 'REQUEST_CONTRACT_LIST' });
-        API.apiGet('getContractList', `?status=${params}`)
+        API.apiGet('getContractListClient', `?status=${params}`)
             .then((response) => {
                 if (response.data) {
                     dispatch({ type: `SET_CONTRACT_LIST`, payload: response?.data?.response?.data });

@@ -9,6 +9,16 @@ const apiKeys = {
   getTalentProposalJob: 'client/talentjob/proposal',
   getProposalJob: 'client/job/proposal',
   talentDetails: 'client/talent/details',//get
+  createContract: 'client/create_contract/',
+
+  publishJob: "client/publish/job", 
+  ////////////////
+   
+  getContractListClient: 'client/get_contract_list',
+  updateContractStatusClient: 'client/update_contract_status',
+  editContract: 'client/edit_contract/',
+  getContractDetailClient: 'client/get_contract_details',
+
 
   //
   userLogin: "talent/user/login",
@@ -46,7 +56,8 @@ const apiKeys = {
   getActiveJobs: "talent/activeJobandContract",
   getPastJobs: "talent/pastJobandContract",
   getCity:"city/filter",
-
+  getPublishedJobs: "client/retrieve/job", //client
+  
   
    //top rated talents
    topRatedTalents: "talent/top/rating",
@@ -56,6 +67,7 @@ const apiKeys = {
 
   //chat
   acceptProposalJobs: "talent/proposal/accept",
+  acceptProposal: 'accept/reject?accept=2',
 
   //proposal
   talentproposalStatus: "talent/proposal/status",

@@ -129,7 +129,7 @@ export default function ViewTalent({ query }) {
                         bio
                     }
                 </p>
-                {/*<hr className={`${styles.hr}`} />
+                <hr className={`${styles.hr}`} />
                 <p className={`${style.jobServiceName}`}>Photos</p>
                  <div className='d-flex align-items-center flex-wrap'>
                     {
@@ -153,7 +153,7 @@ export default function ViewTalent({ query }) {
                     <p className={`${style.jobServiceName}`}>Ratings</p>
                     <div className={`${styles.feedbackStars} my-3`}>{renderStars()}</div>
                 </div>
-                <hr className={`${styles.hr}`} /> */}
+                <hr className={`${styles.hr}`} />
             </Container>
             <Container className='text-center my-4'>
                 <button
@@ -163,6 +163,9 @@ export default function ViewTalent({ query }) {
 
                     Offer
                 </button>
+
+
+
             </Container>
         </>
     )

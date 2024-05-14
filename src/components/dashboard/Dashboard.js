@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+  import React, { useEffect, useState } from 'react'
 import { Col, Container, Image, Nav, Row } from 'react-bootstrap';
 import styles from "../../stylesheet/dashboard.module.scss";
 import { useRouter } from 'next/router';
@@ -64,23 +64,18 @@ export default function Dashboard() {
                             Welcome {profilelist?.fullName}
                           </p>
                         </Col>
-                        <Col md={6} sm={8} xs={10} className={`position-relative mt-2 ms-auto`} onClick={handleSearchDiv}>
-                          <input
-                              type='search'
-                              placeholder='Search for job'
-                              className={`${styles.searchInput} w-100 cursor-pointer`}
-                              // disabled={disabled}
-                          />
-                          <FaSearch
-                              size={20}
-                              color='gray'
-                              className={`${styles.searchIcon}`}
-                          />
+                        <Col md={6} sm={8} xs={10} className={`position-relative d-flex justify-content-end mt-2 ms-auto`} onClick={handleSearchDiv}>
+
+                           <button className='btn btn-outline-primary'>
+                             All Jops
+                           </button>
+
                         </Col>
                       </Row>
                     </div>
                     <Container className=''>
                       <Blogs />
+
                     </Container>
 
                     <Container className={`${styles.body} mb-3 mt-4`}>

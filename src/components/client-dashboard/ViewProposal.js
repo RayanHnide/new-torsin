@@ -90,7 +90,7 @@ export default function ViewProposal({ jobId, styles, style, setViewJobProposal,
 
             <div className={`d-flex justify-content-start align-items-center ${style.publishNav}`}>
                 <span className='me-2' role='button'>
-                    <IconArrowLeft onClick={() => setViewJobProposal(null)} />
+                    {/*<IconArrowLeft onClick={() => setViewJobProposal(null)} />*/}
                 </span>
                 <span className={`${styles.allProposalsTitle} mx-2`}>
                     Proposals Recieved

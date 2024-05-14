@@ -5,7 +5,8 @@ import styles from "../../stylesheet/dashboard.module.scss";
 import Moment from 'react-moment';
 import { Col, Container, Form, Image, Row } from 'react-bootstrap';
  import { IoChevronDown  } from "react-icons/io5";
-import { FiChevronsLeft} from "react-icons/fi";
+
+
 import { FaArrowLeft ,FaSearch} from "react-icons/fa";
 
 export default function AllJobs({ handleSearchDiv, handleView, searchData, setSearchData, handleNavigateToHome }) {
@@ -51,7 +52,7 @@ export default function AllJobs({ handleSearchDiv, handleView, searchData, setSe
                 <Row className='d-flex justify-content-between align-items-center flex-wrap flex-wrap-reverse'>
                     <Col md={6} className='my-2 d-flex'>
                         {!searchData && <span className='pe-2' role='button'>
-                            <FiChevronsLeft size={20} onClick={handleNavigateToHome} />
+                            <FaArrowLeft size={20} onClick={handleNavigateToHome} />
                         </span>}
                         <p className={`${styles.dashboardTitle} my-0`}>
                             {!searchData ?

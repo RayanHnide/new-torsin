@@ -59,7 +59,7 @@ const HeaderComponent = memo(() => {
               </span>
             </div>
             <div className="d-flex justify-content-center align-items-center">
-              <Link href={`http://localhost:3002/dashboard?user=${encodeData(profileList?.email)}`}>
+              <Link hidden={true} href={`http://localhost:3002/dashboard?user=${encodeData(profileList?.email)}`}>
                 <p
                   className="my-0 me-2 cursor-pointer"
                 //  onClick={handleRole}

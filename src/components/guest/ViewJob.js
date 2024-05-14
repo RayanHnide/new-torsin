@@ -45,6 +45,7 @@ export default function ViewTalent({ query }) {
                     <span>
                         Back
                     </span>
+                    
                 </div>
             </Container>
             <Container className={`${styles.viewJobOuterContainer} py-4 px-3`}>

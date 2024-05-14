@@ -33,7 +33,7 @@ export function getContractsList(params) {
 export function getContractDetails(params) {
     return (dispatch) => {
         dispatch({ type: 'REQUEST_CONTRACT_DETAILS' });
-        API.apiGet('getContractDetail', `/${params}`)
+        API.apiGet('getContractDetailClient', `/${params}`)
             .then((response) => {
                 if (response.data) {
                     dispatch({ type: `SET_CONTRACT_DETAILS`, payload: response?.data?.response?.data });
