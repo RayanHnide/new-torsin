@@ -86,10 +86,6 @@ export const ClientMenu = [
 {
   id: 3,
   name: "My Contracts",
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b731723 (update-new-14-5)
   link: "/client-contract",
   Icon: "/images/contracts.png",
   IconActive: "/images/contractsActive.png",
@@ -110,14 +106,11 @@ export const ClientMenu = [
   IconActive: "/images/paymentActive.png",
 },
 
-<<<<<<< HEAD
-=======
+ 
   link: "/contracts-client",
   Icon: "/images/contracts.png",
   IconActive: "/images/contractsActive.png",
-},
-=======
->>>>>>> b731723 (update-new-14-5)
+}, 
   ]
 
   export const CommonMenu = [
