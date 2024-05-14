@@ -118,4 +118,12 @@ a {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   z-index: 7;
+
+  width: 200px !important;
+
+}
+@media (max-width: 768px) {
+   .sidebar{
+     width: 80px !important;
+   }
 }
