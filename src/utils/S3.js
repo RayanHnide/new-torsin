@@ -1,11 +1,11 @@
 import AWS from 'aws-sdk';
 
-// Configure AWS SDK with your credentials and region
-// AWS.config.update({
-//     accessKeyId: 'AKIA3HTEPTYVVR7VTC5L',
-//     secretAccessKey: 'AAq6gq+lOUafJIHZFmyrdlnXV2hWC83b79pvW7EH',
-//     region: 'ap-south-1',
-// });
+Configure AWS SDK with your credentials and region
+AWS.config.update({
+    accessKeyId: 'AKIA3HTEPTYVVR7VTC5L',
+    secretAccessKey: 'AAq6gq+lOUafJIHZFmyrdlnXV2hWC83b79pvW7EH',
+    region: 'ap-south-1',
+});
 
 // Create an S3 instance
 const s3 = new AWS.S3();
