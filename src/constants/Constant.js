@@ -6,97 +6,67 @@ export const appMenuItems = [
     Icon: "/images/dashboard.png",
     IconActive: "/images/dashboardActive.png",
   },
+ 
   {
     id: 2,
-    name: "Feeds",
-    link: "/feeds",
-    Icon: "/images/feeds.png",
-    IconActive: "/images/feedsActive.png",
-  },
-  {
-    id: 3,
     name: "Proposals",
     link: "/proposals",
     Icon: "/images/proposals.png",
     IconActive: "/images/proposalsActive.png",
   },
   {
-    id: 4,
+    id: 3,
     name: "My Jobs",
     link: "/my-jobs",
     Icon: "/images/jobs.png",
     IconActive: "/images/jobsActive.png",
   },
   {
-    id: 5,
+    id: 4,
     name: "My Contracts",
     link: "/contracts",
     Icon: "/images/contracts.png",
     IconActive: "/images/contractsActive.png",
   },
   {
-    id: 6,
+    id: 5,
     name: "Chats",
     link: "/chats",
     Icon: "/images/chats.png",
     IconActive: "/images/chatsActive.png",
   },
   {
-    id: 7,
+    id: 6,
     name: "Payment Methods",
     link: "/payment",
     Icon: "/images/payment.png",
     IconActive: "/images/paymentActive.png",
   },
   {
-    id: 8,
+    id: 7,
     name: "Payment",
     link: "/transaction",
     Icon: "/images/payment.png",
     IconActive: "/images/paymentActive.png",
   },
   {
-    id: 9,
+    id: 8,
     name: "Profile",
     link: "/profile",
     Icon: "/images/profile.png",
     IconActive: "/images/profileActive.png",
   },
+ 
   {
-    id: 10,
-    name: "Notifications",
-    link: "/notifications",
-    Icon: "/images/notifications.png",
-    IconActive: "/images/notificationsActive.png",
-  },
-  {
-    id: 11,
-    name: "Account Settings",
+    id: 9,
+    name: "Account ",
     link: "/settings",
     Icon: "/images/settings.png",
     IconActive: "/images/settingsActive.png",
   },
-  {
-    id: 12,
-    name: "Help & Support",
-    link: "/help-support",
-    Icon: "/images/support.png",
-    IconActive: "/images/supportActive.png",
-  },
-  {
-    id: 13,
-    name: "Jobs",
-    link: "/publish",
-    Icon: "/images/payment.png",
-    IconActive: "/images/paymentActive.png",
-},
-  {
-    id: 14,
-    name: "Logout",
-    link: "/logout",
-    Icon: "/images/logout.png",
-    IconActive: "/images/logoutActive.png",
-  },
+
+ 
+
 ];
 export const ClientMenu = [
   {
@@ -109,19 +79,18 @@ export const ClientMenu = [
 {
   id: 2,
   name: "Payment",
-  link: "/payment-client",
+  link: "/client-payment",
   Icon: "/images/payment.png",
   IconActive: "/images/paymentActive.png",
 },
-<<<<<<< HEAD
-=======
 {
   id: 3,
   name: "My Contracts",
-  link: "/contracts-client",
+  link: "/client-contract",
   Icon: "/images/contracts.png",
   IconActive: "/images/contractsActive.png",
 },
+ 
 {
   id: 4,
   name: "Account Settings",
@@ -129,9 +98,52 @@ export const ClientMenu = [
   Icon: "/images/settings.png",
   IconActive: "/images/settingsActive.png",
 },
->>>>>>> e5ea890 (update)
+{
+  id: 5,
+  name: "Jobs",
+  link: "/publish",
+  Icon: "/images/payment.png",
+  IconActive: "/images/paymentActive.png",
+},
+
   ]
-export const TALENT_ROLE = 1;
+
+  export const CommonMenu = [
+    {
+      id: 1,
+      name: "Help & Support",
+      link: "/help-support",
+      Icon: "/images/support.png",
+      IconActive: "/images/supportActive.png",
+    },
+    
+    {
+      id: 2,
+      name: "Notifications",
+      link: "/notifications",
+      Icon: "/images/notifications.png",
+      IconActive: "/images/notificationsActive.png",
+    },
+
+    {
+      id: 3,
+      name: "Feeds",
+      link: "/feeds",
+      Icon: "/images/feeds.png",
+      IconActive: "/images/feedsActive.png",
+    },
+    {
+      id: 4 ,
+      name: "Logout",
+      link: "/logout",
+      Icon: "/images/logout.png",
+      IconActive: "/images/logoutActive.png"
+    },
+
+
+    ]
+
+// export const TALENT_ROLE = 1;
 // export const routesConfig = {
 //   "/": {
 //     path: "/",
