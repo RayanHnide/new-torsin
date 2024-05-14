@@ -113,6 +113,23 @@ export const ClientMenu = [
   Icon: "/images/payment.png",
   IconActive: "/images/paymentActive.png",
 },
+<<<<<<< HEAD
+=======
+{
+  id: 3,
+  name: "My Contracts",
+  link: "/contracts-client",
+  Icon: "/images/contracts.png",
+  IconActive: "/images/contractsActive.png",
+},
+{
+  id: 4,
+  name: "Account Settings",
+  link: "/client-profile",
+  Icon: "/images/settings.png",
+  IconActive: "/images/settingsActive.png",
+},
+>>>>>>> e5ea890 (update)
   ]
 export const TALENT_ROLE = 1;
 // export const routesConfig = {
