@@ -7,7 +7,8 @@ import API from '../../../helpers/api';
 import { useDispatch } from 'react-redux';
 import { getContractsList } from '../../../store/actions/client-action/contract';
 import { Oval } from 'react-loader-spinner';
-// import { IconArrowLeft } from 'tabler-icons';
+import { useRouter } from 'next/router';
+ 
 
 export default function CreateContract({ percentage, style, style1, contractDetails, styles, publishedJobs, mailList, setCreateContract, editedItem, edit, setEdit, setDetailsId, queryData }) {
 
@@ -15,10 +16,22 @@ export default function CreateContract({ percentage, style, style1, contractDeta
  
     const { contract_details, milestone } = contractDetails;
     const contractId = contractDetails?.contractId
-    
-  
+
+    const router = useRouter();
+    const { id } = router.query;
+    ///////////////////////////////
+
+    const [itemData, setItemData] = useState({ id: '',talentId:'', talentEmail:'',jopName:''});
+
+    useEffect(() => {
+        if (router.query.data) {
+            const data = JSON.parse(decodeURIComponent(router.query.data));
+            setItemData(data);
+        }
+    }, [router.query.data]);
+    ////////////////////////////////
     const initial = {
-        talentId: (edit && contractDetails && contractDetails.talentId) || null,
+        talentId: (id),
         projectId: (edit && contractDetails && contractDetails.jobId) || null,
         description: edit && contractDetails && contractDetails.description || null,
         contractType: edit && contractDetails && contractDetails.contractType || null,
@@ -225,6 +238,7 @@ export default function CreateContract({ percentage, style, style1, contractDeta
     }
 
     const handleNext = () => {
+        alert('s')
         setShowErrors(true);
         if (
             Validation.empty(projectId) ||
@@ -292,6 +306,9 @@ export default function CreateContract({ percentage, style, style1, contractDeta
         setCreateContract(false);
     }
 
+
+
+   
     return (
         <>
             <Toaster />
@@ -336,7 +353,7 @@ export default function CreateContract({ percentage, style, style1, contractDeta
                     <Row className={``}>
                         <Form.Group controlId='email' className='my-2'>
                             <Form.Label className={`${style.formLabel}`}>
-                                Client Email Address
+                                talint Email Address
                             </Form.Label>
                             <Form.Control
                                 required
@@ -345,20 +362,23 @@ export default function CreateContract({ percentage, style, style1, contractDeta
                                 className={`${style.formInput} ${style.formSelect} p-3 ${styles.selectControl} ${(!queryData || edit) && 'bg-white'}`}
                                 name="talentId"
                                 onChange={handleChange}
+                                // value={itemData.talentId}
                                 value={!queryData ? talentId : queryData?.talentId}
                                 disabled={edit || queryData}
-                                isInvalid={showErrors && Validation.empty(talentId)}
+                                // isInvalid={showErrors && Validation.empty(talentId)}
                             >
                                 <option >
-                                    Select
+                                    {/*{itemData.talentEmail}*/}
+                                    select
                                 </option>
+                                <option value={itemData.talentId}>{itemData.talentEmail}</option>
 
-                                 
-                                {
+
+                                {/* {
                                     uniqueData?.map((item, index) => (
-                                        <option key={index} value={item?.talentId} className={`${style.chargeOption}`}>ss</option>
+                                        <option key={index} value={item?.talentId} className={`${style.chargeOption}`}>{item?.talentEmail}</option>
                                     ))
-                                }
+                                } */}
                             </Form.Control>
                             <Form.Control.Feedback type="invalid" className="errorMessage">
                                 {!talentId && "Please select email address"}
@@ -379,9 +399,12 @@ export default function CreateContract({ percentage, style, style1, contractDeta
                                 placeholder='Music Composer'
                                 disabled={edit || queryData}
                                 value={!queryData ? projectId : queryData?.jobId}
-                                isInvalid={showErrors && Validation.empty(projectId)}
+                                // value={itemData.id}
+                                // isInvalid={showErrors && Validation.empty(projectId)}
+
                             >
-                                <option hidden className='text-muted' style={{ color: "#828282" }}>Select</option>
+
+                                <option hidden className='text-muted' style={{ color: "#828282" }}>select</option>
                                 {
                                     publishedJobs?.map((item, index) => (
                                         <option value={item?.id} key={index}>{item?.jobName}</option>
