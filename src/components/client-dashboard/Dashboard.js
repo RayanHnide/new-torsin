@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+ import React, { useEffect, useState } from 'react'
 import { Col, Container, Image, Nav, Row } from 'react-bootstrap';
 import styles from "../../stylesheet/dashboard.module.scss";
 import style from "../../stylesheet/publish.module.scss"
@@ -15,9 +15,32 @@ import { Toaster } from 'react-hot-toast';
 import { firebaseCloudMessaging } from "../../firebase_setup/firebase-client"
 import { encodeData } from '../../helpers/auth';
 import Blogs from './Blogs';
+import axios from "axios";
 
 export default function Dashboard() {
+    const routertoCreate = useRouter()
+    // const handleCreateContract=(item)=>{
+    //     const itemData = {
+    //         id: item.id,
+    //          jopId:'20',
+    //         talentId:'18',
+    //         talentEmail:'rayan@gmail.com',
+    //         jopName:item.jopName
+    //
+    //
+    //     };
+    //
+    //
+    //     // const queryString = encodeURIComponent(JSON.stringify(itemData));
+    //     // routertoCreate.push(`/client-contract?data=${queryString}`);
+    //     console.log(itemData.talentEmail)
+    // }
 
+
+
+
+
+    ///////////////////////////////
     const dispatch = useDispatch();
 
     const [proposedJobs, proposedJobsDetails, topRatedTalents] = useSelector((Gstate) => [
@@ -27,14 +50,11 @@ export default function Dashboard() {
         Gstate?.DashboardReducersClient?.topRatedTalents,
 
     ] );
-    
-     
-
     useEffect(() => {
         dispatch(getTopRatedTalents())
     }, [topRatedTalents?.length])
 
-    const [profilelist] = useSelector((Gstate) => [Gstate?.ProfileReducers?.profilelist, console.log(Gstate),]);
+    const [profilelist] = useSelector((Gstate) => [Gstate?.ProfileReducers?.profilelist]);
     
     useEffect(() => {
         dispatch(getProposedJobs());
@@ -43,7 +63,6 @@ export default function Dashboard() {
     useEffect(() => {
         firebaseCloudMessaging()
     }, [])
-
     const router = useRouter();
     const [disabled, setDisabled] = useState(true);
     const [allProposals, setAllProposals] = useState(false);
@@ -51,7 +70,6 @@ export default function Dashboard() {
     const [viewJobItem, setViewJobItem] = useState(null);
     const [viewReceivedProposalData, setViewReceivedProposalData] = useState(null);
     const [viewJobProposal, setViewJobProposal] = useState(null);
-
     const handleSearchDiv = () => {
         // setDisabled(false);
     }
@@ -137,6 +155,7 @@ export default function Dashboard() {
                         <p
                             className={`${styles.viewMore} my-0`}
                             onClick={handleAllProposals}
+
                         >
                             View more
                         </p>
@@ -153,15 +172,32 @@ export default function Dashboard() {
 
                                         <Col md={12}>
                                             <p className={`${styles.jobTitlePersonName} mb-2`}>
-                                                {item?.jobName}   
+                                                {item?.jobName}
                                             </p>
                                             <p className={`${style.jobDescription} mt-0 mb-2`}>
                                                 {item?.jobDescription}
                                             </p>
                                             <div className={`d-flex pt-1`}>
                                                 <p className={`${style.proposalsRecieved} my-0 me-2`}>Proposals Recieved - </p>
-                                                <p className={`${styles.proposalsCount} my-0`}>{item?.totalCount}</p>
+                                                <p className={`${styles.proposalsCount} my-0`}>{item?.totalCount }</p>
                                             </div>
+
+                                                 <button className='btn btn-outline-primary' onClick={(()=>{
+                                                     // router.push(`/client-contract?id=${item.id}`)
+                                                     // handleCreateContract(item)
+                                                     const itemData = {
+                                                         id: item.id,
+                                                         jopId:'20',
+                                                         talentId:'18',
+                                                         talentEmail:'rayan@gmail.com',
+                                                         jopName:item.jopName
+
+
+                                                     };
+                                                     const queryString = encodeURIComponent(JSON.stringify(itemData));
+                                                     routertoCreate.push(`/client-contract?data=${queryString}`);
+
+                                                 })} >Create Contract</button>
                                         </Col>
                                     </div>
                                 ))
@@ -182,12 +218,8 @@ export default function Dashboard() {
                     </div>
                     
                     <Container className={`${styles.body}`}>
-                         <button onClick={()=>{
-                             console.log(topRatedTalents);
-                            
-                         }}>
-                            asdasdasd
-                         </button>
+                         
+
                         <Row className='mx-1 mb-3'>
                             {
                                 topRatedTalents?.slice(0, 5)?.map((item, index) => (
@@ -301,4 +333,3 @@ export default function Dashboard() {
         </>
     )
 }
-
