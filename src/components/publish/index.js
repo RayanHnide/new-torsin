@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+ import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Image, Modal, Row } from 'react-bootstrap';
 import Publish from './Publish';
 import styles from '../../stylesheet/publish.module.scss';
@@ -141,14 +141,15 @@ export default function Home({ query }) {
                                 <span> Publish a jobs </span>
                             </div>
                         </div>
+
                         <Row className='mx-1 mb-2'>
                             {publishedJobs?.length ?
 
                                 publishedJobs?.map((job, id) => (
                                     <div key={id} className={`row ${(id % 2) == 0 ? styles.oddContainer : styles.evenContainer} my-2 px-4 py-3`} onClick={() => handleView(job)}>
-                                        {/* <Col md={1} className=''>
+                                         <Col md={1} className=''>
                                             <Image src={job.photos[0]} className={`img img-fluid ${styles.getImage} my-3`} alt='job' />
-                                        </Col> */}
+                                        </Col>
 
                                         <Col md={12}>
                                             <p className={`${styles.jobTitle} mb-2`}>
