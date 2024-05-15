@@ -1,7 +1,9 @@
-import React from 'react';
+ import React from 'react';
 import { Col, Container, Image, Row } from 'react-bootstrap';
+import {useRouter} from "next/router";
  
 export default function TalentProposals({ style, styles, handleProposalBackIconClick, handleReceivedProposal, proposedJobs }) {
+    const routertoCreate=useRouter()
     return (
         <>
             <div className={`d-flex justify-content-start align-items-center mb-1 ${style.publishNav}`}>
@@ -33,6 +35,22 @@ export default function TalentProposals({ style, styles, handleProposalBackIconC
                                         <p className={`${style.proposalsRecieved} my-0 me-2`}>Proposals Recieved - </p>
                                         <p className={`${styles.proposalsCount} my-0`}>{item?.totalCount}</p>
                                     </div>
+                                    <button className='btn btn-outline-primary' onClick={(()=>{
+                                        // router.push(`/client-contract?id=${item.id}`)
+                                        // handleCreateContract(item)
+                                        const itemData = {
+                                            id: item.id,
+                                            jopId:'20',
+                                            talentId:'18',
+                                            talentEmail:'rayan@gmail.com',
+                                            jopName:item.jopName
+
+
+                                        };
+                                        const queryString = encodeURIComponent(JSON.stringify(itemData));
+                                        routertoCreate.push(`/client-contract?data=${queryString}`);
+
+                                    })} >Create Contract</button>
                                 </Col>
                             </div>
                         ))
