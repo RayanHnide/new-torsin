@@ -43,7 +43,9 @@ export default function TalentProposals({ style, styles, handleProposalBackIconC
                                             jopId:'20',
                                             talentId:'18',
                                             talentEmail:'rayan@gmail.com',
-                                            jopName:item.jopName
+                                            jobName:item.jobName,
+                                            page:false
+
 
 
                                         };
