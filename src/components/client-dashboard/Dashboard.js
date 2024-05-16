@@ -19,28 +19,6 @@ import axios from "axios";
 
 export default function Dashboard() {
     const routertoCreate = useRouter()
-    // const handleCreateContract=(item)=>{
-    //     const itemData = {
-    //         id: item.id,
-    //          jopId:'20',
-    //         talentId:'18',
-    //         talentEmail:'rayan@gmail.com',
-    //         jopName:item.jopName
-    //
-    //
-    //     };
-    //
-    //
-    //     // const queryString = encodeURIComponent(JSON.stringify(itemData));
-    //     // routertoCreate.push(`/client-contract?data=${queryString}`);
-    //     console.log(itemData.talentEmail)
-    // }
-
-
-
-
-
-    ///////////////////////////////
     const dispatch = useDispatch();
 
     const [proposedJobs, proposedJobsDetails, topRatedTalents] = useSelector((Gstate) => [
