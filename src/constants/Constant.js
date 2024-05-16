@@ -1,4 +1,4 @@
-export const appMenuItems = [
+ export const appMenuItems = [
   {
     id: 1,
     name: "Dashboard",
@@ -106,11 +106,6 @@ export const ClientMenu = [
   IconActive: "/images/paymentActive.png",
 },
 
- 
-  link: "/contracts-client",
-  Icon: "/images/contracts.png",
-  IconActive: "/images/contractsActive.png",
-}, 
   ]
 
   export const CommonMenu = [
