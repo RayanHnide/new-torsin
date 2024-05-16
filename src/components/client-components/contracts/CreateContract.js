@@ -238,7 +238,7 @@ export default function CreateContract({ percentage, style, style1, contractDeta
     }
 
     const handleNext = () => {
-        alert('s')
+        
         setShowErrors(true);
         if (
             Validation.empty(projectId) ||
