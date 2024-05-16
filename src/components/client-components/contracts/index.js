@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+ import React, { useEffect, useState } from 'react';
 import styles from "../../../stylesheet/contracts.module.scss";
 import style from "../../../stylesheet/publish.module.scss"
 import style1 from '../../../stylesheet/dashboard.module.scss';
@@ -17,7 +17,7 @@ import ArchiveContracts from './ArchiveContracts';
 import { Oval } from 'react-loader-spinner';
 import { useRouter } from 'next/router';
 import { decodeData } from '../../../helpers/auth';
-
+import { IoSend } from "react-icons/io5";
 const TABS = [
     { id: 0, label: 'Sent', filter: item => item.status === 0 },
     { id: 1, label: 'Accepted', filter: item => item.status === 1 },
@@ -37,7 +37,18 @@ export default function Contracts() {
 
     const router = useRouter();
     const { query } = router;
+/////////////////////////////////////
+    const [itemData, setItemData] = useState({ id: '',talentId:'', talentEmail:'',jobName:'' ,page:true});
 
+    useEffect(() => {
+        if (router.query.data) {
+            const data = JSON.parse(decodeURIComponent(router.query.data));
+            setItemData(data);
+            setCreateContract(itemData.page)
+        }
+    }, [router.query.data]);
+    ///////////////////////////////
+     
     useEffect(() => {
         if (router?.asPath.includes('createcontract')) {
 
@@ -58,7 +69,6 @@ export default function Contracts() {
 
 
     ])
-
     useEffect(() => {
         dispatch(getAllContractsList())
     }, [allContractsList?.length, archive])
@@ -184,9 +194,10 @@ export default function Contracts() {
                                     className={`${styles.createButton} px-4 d-flex justify-content-center align-items-center`}
                                     onClick={() => { setCreateContract(true) }}
                                 >
-                                    {/* <IconSend
+
+                                    <IoSend
                                         color='white'
-                                    /> */}
+                                    />
                                     <p className={`${styles.email} ms-2 my-0 text-white py-2`}>
                                         Create Contract
                                     </p>
