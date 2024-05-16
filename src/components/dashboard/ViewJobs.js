@@ -87,7 +87,8 @@ export default function ViewJobs({ job, styles, handleIconClick, handleApply }) 
                     }
                 </div>
             </Container>
-            <Container   style={{
+            <Container   className='text-sm-end text-center mt-4 mb-2'>
+                <button  style={{
                         fontWeight: '400',
                         fontSize: '14px',
                         lineHeight: '140%',
@@ -100,8 +101,7 @@ export default function ViewJobs({ job, styles, handleIconClick, handleApply }) 
                         fonWeight: '700',
                         color: '#FFFFFF',
                         border: '0',
-                    }} className='text-sm-end text-center mt-4 mb-2'>
-                <button
+                    }}
                     className={`${styles.applyJobButton} px-5 py-3`}
                     onClick={() => handleApply(job)}
                 >
