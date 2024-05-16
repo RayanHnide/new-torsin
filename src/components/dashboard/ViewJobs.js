@@ -42,6 +42,7 @@ export default function ViewJobs({ job, styles, handleIconClick, handleApply }) 
                                     priceRate
                                 }
                             </p>
+                                
                         </div>
                     </div>
                     <div className='text-sm-end'>
@@ -86,7 +87,20 @@ export default function ViewJobs({ job, styles, handleIconClick, handleApply }) 
                     }
                 </div>
             </Container>
-            <Container className='text-sm-end text-center mt-4 mb-2'>
+            <Container   style={{
+                        fontWeight: '400',
+                        fontSize: '14px',
+                        lineHeight: '140%',
+
+                        cursor: 'pointer',
+                        padding: '1.5% 4%',
+                        gap: '8px',
+                        background: '#0E184D',
+                        borderRadius: '12px',
+                        fonWeight: '700',
+                        color: '#FFFFFF',
+                        border: '0',
+                    }} className='text-sm-end text-center mt-4 mb-2'>
                 <button
                     className={`${styles.applyJobButton} px-5 py-3`}
                     onClick={() => handleApply(job)}
