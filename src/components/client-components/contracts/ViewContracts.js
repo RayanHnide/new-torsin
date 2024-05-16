@@ -4,9 +4,10 @@ import { Col, Container, Form, Image, Row } from 'react-bootstrap'
 
 export default function ViewContracts({ style, styles, style1, contractDetails, setDetailsId, percentage }) {
     // const [ talent_details, client_details, job_details, milestone, contract_details  = contractDetails;
+        const adminPercentage = Array.isArray(percentage) && percentage.length > 0 ? percentage[0] : { adminPercentage: 0 };  
 
-    const [adminPercentage] = percentage;
-    const totalPrice = contractDetails?.milestoneData && contractDetails.milestoneData.reduce((total, milestone) => total + parseFloat(milestone.price), 0);
+
+     const totalPrice = contractDetails?.milestoneData && contractDetails.milestoneData.reduce((total, milestone) => total + parseFloat(milestone.price), 0);
     const torsinFee = totalPrice * adminPercentage?.adminPercentage / 100;
     const receivingAmount = totalPrice - torsinFee;
 
