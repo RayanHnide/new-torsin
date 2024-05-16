@@ -1,10 +1,6 @@
 import AWS from 'aws-sdk';
 
- 
-Configure AWS SDK with your credentials and region
- 
 // Configure AWS SDK with your credentials and region
- 
 AWS.config.update({
     accessKeyId: 'AKIA3HTEPTYVVR7VTC5L',
     secretAccessKey: 'AAq6gq+lOUafJIHZFmyrdlnXV2hWC83b79pvW7EH',
@@ -32,8 +28,4 @@ export const uploadFileToS3 = async (file, fileName, ContentType) => {
         console.error('Error uploading file:', error);
         throw error;
     }
- 
 };
- 
-};
->>>>>>> 408228e (update)
