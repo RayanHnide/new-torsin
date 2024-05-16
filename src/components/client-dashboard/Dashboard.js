@@ -161,9 +161,21 @@ export default function Dashboard() {
                                                 <p className={`${styles.proposalsCount} my-0`}>{item?.totalCount }</p>
                                             </div>
 
-                                                 <button className='btn btn-outline-primary' onClick={(()=>{
-                                                     // router.push(`/client-contract?id=${item.id}`)
-                                                     // handleCreateContract(item)
+                                                 <button style={{
+                                                     fontWeight: '400',
+                                                     fontSize: '14px',
+                                                     lineHeight: '90%',
+
+                                                     cursor: 'pointer',
+                                                     padding: '1.5% 4%',
+                                                     gap: '8px',
+                                                     background: '#0E184D',
+                                                     borderRadius: '12px',
+                                                     fonWeight: '700',
+                                                     color: '#FFFFFF',
+                                                     border: '0',
+                                                 }}  className='mt-3' onClick={(()=>{
+                                                      
                                                      const itemData = {
                                                          id: item.id,
                                                          jopId:'20',
