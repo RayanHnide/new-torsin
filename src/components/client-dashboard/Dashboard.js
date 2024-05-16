@@ -1,4 +1,4 @@
- import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Container, Image, Nav, Row } from 'react-bootstrap';
 import styles from "../../stylesheet/dashboard.module.scss";
 import style from "../../stylesheet/publish.module.scss"
@@ -174,6 +174,7 @@ export default function Dashboard() {
                                             <p className={`${styles.jobTitlePersonName} mb-2`}>
                                                 {item?.jobName}
                                             </p>
+
                                             <p className={`${style.jobDescription} mt-0 mb-2`}>
                                                 {item?.jobDescription}
                                             </p>
@@ -190,12 +191,15 @@ export default function Dashboard() {
                                                          jopId:'20',
                                                          talentId:'18',
                                                          talentEmail:'rayan@gmail.com',
-                                                         jopName:item.jopName
+                                                         jobName: item.jobName,
+                                                         page:false
 
 
                                                      };
+
                                                      const queryString = encodeURIComponent(JSON.stringify(itemData));
                                                      routertoCreate.push(`/client-contract?data=${queryString}`);
+
 
                                                  })} >Create Contract</button>
                                         </Col>
