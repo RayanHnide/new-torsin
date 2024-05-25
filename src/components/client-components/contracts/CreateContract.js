@@ -12,26 +12,27 @@ import { useRouter } from 'next/router';
 
 export default function CreateContract({ percentage, style, style1, contractDetails, styles, publishedJobs, mailList, setCreateContract, editedItem, edit, setEdit, setDetailsId, queryData }) {
 
-    const adminPercentage = percentage
+    const adminPercentage = Array.isArray(percentage) && percentage.length > 0 ? percentage[0] : { adminPercentage: 8 };
  
     const { contract_details, milestone } = contractDetails;
     const contractId = contractDetails?.contractId
 
     const router = useRouter();
-    const { id } = router.query;
-    ///////////////////////////////
 
-    const [itemData, setItemData] = useState({ id: '',talentId:'', talentEmail:'',jopName:''});
+ 
+
+    const [itemData, setItemData] = useState({ id: '',talentId:'', talentEmail:'',jobName:'' ,jobId:''});
 
     useEffect(() => {
         if (router.query.data) {
+            setCreateContract(true)
             const data = JSON.parse(decodeURIComponent(router.query.data));
             setItemData(data);
         }
     }, [router.query.data]);
     ////////////////////////////////
     const initial = {
-        talentId: (id),
+        talentId: (itemData.talentId),
         projectId: (edit && contractDetails && contractDetails.jobId) || null,
         description: edit && contractDetails && contractDetails.description || null,
         contractType: edit && contractDetails && contractDetails.contractType || null,
@@ -48,11 +49,13 @@ export default function CreateContract({ percentage, style, style1, contractDeta
 
     useEffect(() => {
         const updatedInitial = { ...initial };
-        if (queryData?.talentId) {
-            updatedInitial.talentId = queryData.talentId;
+        if (itemData?.talentId) {
+            updatedInitial.talentId = itemData.talentId;
         }
-        if (queryData?.jobId) {
-            updatedInitial.projectId = queryData.jobId;
+
+
+        if (itemData?.jobId) {
+            updatedInitial.projectId = itemData.jobId;
         }
         setData(updatedInitial);
     }, [queryData, queryData?.talentId, queryData?.jobId])
@@ -135,7 +138,7 @@ export default function CreateContract({ percentage, style, style1, contractDeta
         if (
             Validation.empty(projectId) ||
             Validation.empty(contractType) ||
-            Validation.empty(talentId) ||
+            Validation.empty(itemData.talentId) ||
             !Validation.minOf(description, 50, 500) ||
             data?.contractType == '2' &&
             (!Validation.numberType(amount) ||
@@ -214,6 +217,7 @@ export default function CreateContract({ percentage, style, style1, contractDeta
                 API.apiPost('createContract', (data))
                     .then((res) => {
                         if (res) {
+                            console.log(res)
                             toast.success(res?.data?.response?.message?.successMessage, {
                                 position: "top-right",
                                 style: {
@@ -227,6 +231,7 @@ export default function CreateContract({ percentage, style, style1, contractDeta
                         setSuccessModal(true);
                     })
                     .catch((err) => {
+
                         handleErrorMessage(err);
                     });
             }
@@ -238,7 +243,7 @@ export default function CreateContract({ percentage, style, style1, contractDeta
     }
 
     const handleNext = () => {
-        
+
         setShowErrors(true);
         if (
             Validation.empty(projectId) ||
@@ -363,13 +368,13 @@ export default function CreateContract({ percentage, style, style1, contractDeta
                                 name="talentId"
                                 onChange={handleChange}
                                 // value={itemData.talentId}
-                                value={!queryData ? talentId : queryData?.talentId}
+                                value={!queryData ? talentId : itemData?.talentId}
                                 disabled={edit || queryData}
                                 // isInvalid={showErrors && Validation.empty(talentId)}
                             >
                                 <option >
                                     {/*{itemData.talentEmail}*/}
-                                    select
+                                    {itemData.talentEmail}
                                 </option>
                                 <option value={itemData.talentId}>{itemData.talentEmail}</option>
 
@@ -387,7 +392,7 @@ export default function CreateContract({ percentage, style, style1, contractDeta
 
                         <Form.Group controlId='contract-name' className='my-2'>
                             <Form.Label className={`${style.formLabel}`}>
-                                Contract Name
+                                Jop Name
                             </Form.Label>
                             <Form.Control
                                 required
@@ -399,12 +404,10 @@ export default function CreateContract({ percentage, style, style1, contractDeta
                                 placeholder='Music Composer'
                                 disabled={edit || queryData}
                                 value={!queryData ? projectId : queryData?.jobId}
-                                // value={itemData.id}
-                                // isInvalid={showErrors && Validation.empty(projectId)}
-
+                                isInvalid={showErrors && Validation.empty(projectId)}
                             >
 
-                                <option hidden className='text-muted' style={{ color: "#828282" }}>select</option>
+                                <option hidden className='text-muted' style={{ color: "#828282" }}>{itemData.jobName}</option>
                                 {
                                     publishedJobs?.map((item, index) => (
                                         <option value={item?.id} key={index}>{item?.jobName}</option>
