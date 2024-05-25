@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+ import React, { useEffect, useState } from 'react';
 import { Col, Container, Form, Row, Image } from 'react-bootstrap';
-// import { IconArrowLeft, IconLetterX, IconMessageOff } from 'tabler-icons';
-import style from '../../stylesheet/profile.module.scss';
+ import {FaArrowLeft,FaVideo} from 'react-icons/fa'
+ import style from '../../stylesheet/profile.module.scss';
 import { BallTriangle } from 'react-loader-spinner';
 import { useRouter } from 'next/router';
 import Validation from '../../utils/Validation';
@@ -15,7 +15,7 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
 
     const router = useRouter();
 
-    const [userProposal, setUserProposal] = useState({ message: null, video: null, portfolio: null, projectType: null, images: null, charge: null });
+    const [userProposal, setUserProposal] = useState({ message: null, video: null, portfolio: null, projectType: null, images: [], charge: null });
     const { message, video, portfolio, projectType, images, charge } = userProposal;
     const [showErrors, setShowErrors] = useState(false);
 
@@ -80,7 +80,6 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
     }
 
     const handleUpload = async (index) => {
-        
         const selectedFile = selectedServiceImages[index];
 
         if (!selectedFile) {
@@ -109,10 +108,19 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
             console.log("err", err)
         }
     };
-
+   
     useEffect(() => {
-        handleUpload(clickedIndex);
-    }, [clickedIndex])
+        async function upload() {
+            if (clickedIndex) {
+                try {
+                    await handleUpload(clickedIndex);
+                } catch (error) {
+                    console.error('Failed to upload file:', error);
+                }
+            }
+        }
+        upload();
+    }, [clickedIndex]);
 
     const handleSubmitProposal = () => {
         setShowErrors(true);
@@ -133,14 +141,8 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
             userProposal.video = videoUrl;
             userProposal.job = applyJob.id;
             userProposal.charge = userProposal.charge ? userProposal.charge : null;
-
-            console.log((userProposal))
-            API.apiPost("postJobProposal", (userProposal),{
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2MjAwODA0LCJpYXQiOjE3MTU1OTYwMDQsImp0aSI6IjFmYzE4OTQ1YTkzMzRlZDg5NjlkNWE5OGJlYWUxZmFjIiwidXNlcl9pZCI6MjUxfQ.v2LLofBkZhexU0deVA0BmMXwP3_0kJ2C-yRE1-DC9tk'
-            })
+            API.apiPost("postJobProposal", (userProposal))
                 .then((response) => {
-
                     if (response) {
                         toast.success(response?.data?.response?.message?.successMessage, {
                             position: "top-right",
@@ -166,7 +168,11 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
         successPage && router.push('/proposals');
     }, 1000);
 
-
+    const handleRemoveImage = (index) => {
+        const updatedImages = [...selectedServiceImages];
+        updatedImages[index] = './images/uploadImageIcon.png'; // Reset to default upload icon
+        setSelectedServiceImages(updatedImages);
+    }
     return (
         <>
             <Toaster />
@@ -175,7 +181,7 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
                 
                     <div className={`d-flex justify-content-start align-items-center py-4 mb-2 ${styles.publishNav}`}>
                         <span className='me-3' role='button'>
-                            {/*<IconArrowLeft onClick={handleApplyJobBackIconClick} />*/}
+                            <FaArrowLeft onClick={handleApplyJobBackIconClick} />
                         </span>
                         <span className={`${styles.viewJob} mx-2`}>
                             {
@@ -290,11 +296,11 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
                                     <div className={`d-flex justify-content-between align-items-center ${style.videoDiv} p-2`}>
                                         {
                                             selectedServiceImages.map((file, index) => (
-                                                <div key={index} className={`${style.uploadImageDiv} m-2 d-flex align-items-center justify-content-center`}>
+                                                <div key={index} className={`${style.uploadImageDiv} m-2 d-flex align-items-center justify-content-center position-relative`}>
                                                     <Form.Group
                                                         className='mt-3 mb-2'
                                                     >
-                                                        <Form.Label htmlFor={`service-image${index}`}>
+                                                        <Form.Label  htmlFor={`service-image${index}`}>
                                                             <div className={`${(file === './images/uploadImageIcon.png') ? 'text-center' : ''} text-center `}>
                                                                 <Image src={file} className={`img img-fluid ${(file !== './images/uploadImageIcon.png') ? style.addServiceImage1 : ''}`} alt='add photos' />
                                                                 <p className={`${style.clickHere} text-center ${(file != './images/uploadImageIcon.png') ? 'd-none' : 'my-0'}`}>Click Here</p>
@@ -302,6 +308,13 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
                                                             <input id={`service-image${index}`} className='d-none' type="file" name="video[]" accept="image/*" onChange={(e) => handleServiceImage(e, index)} />
                                                         </Form.Label>
                                                     </Form.Group>
+                                                    <button 
+                                                        className="btn btn-primary position-absolute top-0 end-0" 
+                                                        onClick={() => handleRemoveImage(index)}
+                                                        style={{ zIndex: 10 }}
+                                                    >
+                                                        X
+                                                    </button>
                                                 </div>
                                             ))
                                         }
@@ -340,12 +353,11 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
                                                 />
                                                 :
                                                 <div className={`${style.videoDiv} d-flex justify-content-center align-items-center py-3 position-relative`}>
-                                                    {/*<IconLetterX*/}
-                                                    {/*    size={17}*/}
-                                                    {/*    className={`${style.iconCross}`}*/}
-                                                    {/*    onClick={handleVideoChange}*/}
-                                                    {/*/>*/}
-                                                    Change
+                                                    <FaVideo
+                                                        size={17}
+                                                        className={`${style.iconCross}`}
+                                                        onClick={handleVideoChange}
+                                                    />
                                                     <video width="305" height="150" controls className={`${style.video}`}>
                                                         <source src={videoUrl} type="video/mp4" />
                                                     </video>
