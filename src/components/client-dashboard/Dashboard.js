@@ -18,16 +18,25 @@ import Blogs from './Blogs';
 import axios from "axios";
 
 export default function Dashboard() {
-    const routertoCreate = useRouter()
+ 
+
+
+
+
+
+
     const dispatch = useDispatch();
 
     const [proposedJobs, proposedJobsDetails, topRatedTalents] = useSelector((Gstate) => [
        
         Gstate?.DashboardReducersClient?.proposedJobs,
         Gstate?.DashboardReducersClient?.proposedJobsDetails,
-        Gstate?.DashboardReducersClient?.topRatedTalents,
+        Gstate?.DashboardReducersClient?.topRatedTalents
 
     ] );
+
+
+
     useEffect(() => {
         dispatch(getTopRatedTalents())
     }, [topRatedTalents?.length])
@@ -161,37 +170,6 @@ export default function Dashboard() {
                                                 <p className={`${styles.proposalsCount} my-0`}>{item?.totalCount }</p>
                                             </div>
 
-                                                 <button style={{
-                                                     fontWeight: '400',
-                                                     fontSize: '14px',
-                                                     lineHeight: '90%',
-
-                                                     cursor: 'pointer',
-                                                     padding: '1.5% 4%',
-                                                     gap: '8px',
-                                                     background: '#0E184D',
-                                                     borderRadius: '12px',
-                                                     fonWeight: '700',
-                                                     color: '#FFFFFF',
-                                                     border: '0',
-                                                 }}  className='mt-3' onClick={(()=>{
-                                                      
-                                                     const itemData = {
-                                                         id: item.id,
-                                                         jopId:'20',
-                                                         talentId:'18',
-                                                         talentEmail:'rayan@gmail.com',
-                                                         jobName: item.jobName,
-                                                         page:false
-
-
-                                                     };
-
-                                                     const queryString = encodeURIComponent(JSON.stringify(itemData));
-                                                     routertoCreate.push(`/client-contract?data=${queryString}`);
-
-
-                                                 })} >Create Contract</button>
                                         </Col>
                                     </div>
                                 ))
@@ -309,6 +287,7 @@ export default function Dashboard() {
                             <ReceivedProposal
                                 style={style}
                                 styles={styles}
+
                                 proposedJobsDetails={proposedJobsDetails}
                                 viewReceivedProposalData={viewReceivedProposalData}
                                 setViewJobProposal={setViewJobProposal}
