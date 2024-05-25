@@ -6,7 +6,6 @@ import jstyle from '../../../stylesheet/job.module.scss';
 import { Col, Container, Image, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import ContractsData from './ContractsData';
-// import { IconSend } from 'tabler-icons';
 import CreateContract from './CreateContract';
 import { getPublishedJobs } from '../../../store/actions/client-action/publishJob';
 import { getContractDetails, getContractsList, getAllContractsList, getAdminPercentage } from '../../../store/actions/client-action/contract';
