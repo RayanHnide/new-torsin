@@ -1,13 +1,14 @@
-import React from 'react'
+ import React from 'react'
 import { Container, Image } from 'react-bootstrap'
 import Moment from 'react-moment';
 import {FaArrowLeft} from "react-icons/fa6";
+import {useRouter} from "next/router";
 // import { IconArrowLeft } from 'tabler-icons'
 
 export default function ViewJobs({ job, styles, handleIconClick, handleApply }) {
 
     const { jobName, jobDescription, priceRate, location, countryName, photos } = job;
-
+    const router=  useRouter()
     return (
         <>
             <div className={`d-flex justify-content-start align-items-center pt-4 mb-2 ${styles.publishNav}`}>
@@ -16,6 +17,7 @@ export default function ViewJobs({ job, styles, handleIconClick, handleApply }) 
                 </span>
                 <span className={`${styles.viewJob} mx-2`}>
                     View Job
+
                 </span>
 
                 {/* <span className='mb-1'>
@@ -29,20 +31,19 @@ export default function ViewJobs({ job, styles, handleIconClick, handleApply }) 
                 </span> */}
             </div>
             <Container className={`${styles.viewJobOuterContainer} py-4 px-5`}>
-                <p className={`${styles.jobServiceName}`}>{job.adminService}</p>
+                <p className={`${styles.jobServiceName}`}> {jobName}</p>
                 <div className={`d-flex justify-content-between align-items-center flex-wrap`}>
                     <div className={`d-flex justify-content-start align-items-center`}>
                         {/* <Image src={photos[0]} className={`img img-fluid ${styles.getImage} me-3 border`} alt='job' /> */}
                         <div>
                             <p className={`${styles.companyName} my-2 text-capitalize`}>
-                                {jobName}
+                            {job.adminService} 
                             </p>
                             <p className={`${styles.viewJobRate} my-2`}>
                                 ${
                                     priceRate
                                 }
                             </p>
-                                
                         </div>
                     </div>
                     <div className='text-sm-end'>
@@ -87,8 +88,9 @@ export default function ViewJobs({ job, styles, handleIconClick, handleApply }) 
                     }
                 </div>
             </Container>
-            <Container   className='text-sm-end text-center mt-4 mb-2'>
-                <button  style={{
+            <Container className='text-sm-end text-center mt-4 mb-2'>
+                <button
+                    style={{
                         fontWeight: '400',
                         fontSize: '14px',
                         lineHeight: '140%',
@@ -102,10 +104,11 @@ export default function ViewJobs({ job, styles, handleIconClick, handleApply }) 
                         color: '#FFFFFF',
                         border: '0',
                     }}
-                    className={`${styles.applyJobButton} px-5 py-3`}
+                    className={`${styles.applyJobButton}  px-5 py-3`}
                     onClick={() => handleApply(job)}
                 >
-                    Apply for job
+                    Apply for Jop
+
                 </button>
             </Container>
         </>
