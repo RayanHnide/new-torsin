@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+ import React, { useEffect, useState } from 'react';
 import styles from "../../stylesheet/publish.module.scss";
 import { Col, Container, Form, Image, Row } from 'react-bootstrap';
 import { uploadFileToS3 } from '../../utils/S3';
@@ -9,7 +9,8 @@ import { handleErrorMessage } from '../../utils/CommonFunctions'
 import { getAdminServices, getCorresCity, getPublishedJobs } from '../../store/actions/publishJob';
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster, toast } from 'react-hot-toast';
-// import { IconTras/h } from 'tabler-icons';
+import { FaTrashAlt } from "react-icons/fa";
+
 import MultiSelectDropdown from './Multiselect';
 import { Country, State, City } from "country-state-city";
 import Select from "react-select";
@@ -127,7 +128,7 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
             setShowErrors(true);
             return;
         }
-        //if (flag) 
+        //if (flag)
         else {
 
             data.photos = [...imageUrl1];
@@ -190,7 +191,7 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
             setShowErrors(false);
             data.id = parseInt(editJob.id);
             data.location = selectedCity.label
-            data.countryName = selectedCountry.name            
+            data.countryName = selectedCountry.name
             data.adminService = adminService
 
             // if (data.adminService == adminService && !adminServices.some(service => service.id === parseInt(adminService))) {
@@ -347,7 +348,7 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
                             /> */}
                             <Select
                                 className={`${styles.formInput} p-2 ${showErrors1 && !selectedCity && styles.borderDanger
-                                    } `}
+                                } `}
                                 options={getOptionsArray()} // Use the converted array of objects
                                 name="cityName"
                                 getOptionLabel={(option) => option.label}
@@ -365,7 +366,7 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
                                 <p className="errorMessage text-danger">Please select a city.</p>
                             )}
                         </Form.Group>
-                        {/* 
+                        {/*
                         {corresCity?.map((city) => (
                             <div key={city}>{city}</div>
                         ))} */}
@@ -468,19 +469,19 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
                                                     onChange={(e) => handlePhotosChange(e, item, id)}
                                                 />
                                             </Form.Label>
-                                            {/* <Form.Control.Feedback type="invalid" className={`${styles.errorMessage}`}>                                                
+                                            {/* <Form.Control.Feedback type="invalid" className={`${styles.errorMessage}`}>
                                                 {showErrors && Validation.empty(item.photos) && "Please add photo"}
                                             </Form.Control.Feedback> */}
                                         </Form.Group>
                                     </Col>
                                     {addPhotoFields.length > 1 &&
                                         <Col md={1}>
-                                            {/* <IconTrash
+                                            <FaTrashAlt
                                                 color='red'
                                                 className={`mb-4`}
                                                 role='button'
                                                 onClick={() => removePhotoFields(id)}
-                                            /> */}
+                                            />
                                         </Col>
                                     }
                                 </Row>
@@ -510,7 +511,7 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
                                 // value={adminServices?.find(service => service.serviceName === adminService)?.id || adminService}
                                 isInvalid={showErrors && Validation.empty(adminService)}
                             >
-                                <option hidden className='text-muted'>Select</option>                               
+                                <option hidden className='text-muted'>Select</option>
                             </Form.Control>
                             <Form.Control.Feedback type="invalid" className="errorMessage">
                                 {!adminService && "Please select service"}
