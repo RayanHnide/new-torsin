@@ -1,7 +1,9 @@
- import React, { useEffect, useState } from 'react';
+  
+
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Form, Row, Image } from 'react-bootstrap';
- import {FaArrowLeft,FaVideo} from 'react-icons/fa'
- import style from '../../stylesheet/profile.module.scss';
+// import { IconArrowLeft, IconLetterX, IconMessageOff } from 'tabler-icons';
+import style from '../../stylesheet/profile.module.scss';
 import { BallTriangle } from 'react-loader-spinner';
 import { useRouter } from 'next/router';
 import Validation from '../../utils/Validation';
@@ -15,7 +17,7 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
 
     const router = useRouter();
 
-    const [userProposal, setUserProposal] = useState({ message: null, video: null, portfolio: null, projectType: null, images: [], charge: null });
+    const [userProposal, setUserProposal] = useState({ message: null, video: null, portfolio: null, projectType: null, images: null, charge: null });
     const { message, video, portfolio, projectType, images, charge } = userProposal;
     const [showErrors, setShowErrors] = useState(false);
 
@@ -109,18 +111,10 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
         }
     };
    
+
     useEffect(() => {
-        async function upload() {
-            if (clickedIndex) {
-                try {
-                    await handleUpload(clickedIndex);
-                } catch (error) {
-                    console.error('Failed to upload file:', error);
-                }
-            }
-        }
-        upload();
-    }, [clickedIndex]);
+        handleUpload(clickedIndex);
+    }, [clickedIndex])
 
     const handleSubmitProposal = () => {
         setShowErrors(true);
@@ -132,7 +126,7 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
             return;
         }
         
-
+      
         else {
             setShowErrors(false);
             if (apiImageUrl.length) {
@@ -143,6 +137,7 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
             userProposal.charge = userProposal.charge ? userProposal.charge : null;
             API.apiPost("postJobProposal", (userProposal))
                 .then((response) => {
+                    console.log(response);
                     if (response) {
                         toast.success(response?.data?.response?.message?.successMessage, {
                             position: "top-right",
@@ -167,12 +162,13 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
     setTimeout(() => {
         successPage && router.push('/proposals');
     }, 1000);
-
     const handleRemoveImage = (index) => {
         const updatedImages = [...selectedServiceImages];
         updatedImages[index] = './images/uploadImageIcon.png'; // Reset to default upload icon
         setSelectedServiceImages(updatedImages);
     }
+ 
+
     return (
         <>
             <Toaster />
@@ -181,12 +177,12 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
                 
                     <div className={`d-flex justify-content-start align-items-center py-4 mb-2 ${styles.publishNav}`}>
                         <span className='me-3' role='button'>
-                            <FaArrowLeft onClick={handleApplyJobBackIconClick} />
+                            {/* <IconArrowLeft onClick={handleApplyJobBackIconClick} /> */}
                         </span>
+                       
+                       
                         <span className={`${styles.viewJob} mx-2`}>
-                            {
-                                applyJob?.adminService
-                            }
+                            Jobs
                         </span>
                         <span className='mb-1'>
                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-math-greater" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -195,7 +191,9 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
                             </svg>
                         </span>
                         <span className={`${styles.viewJob} mx-2`}>
-                            Jobs
+                            {
+                                applyJob?.adminService
+                            }
                         </span>
                         
                     </div>
@@ -285,7 +283,7 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
                         </Row>
                         <Row className='d-flex align-items-center'>
                             <Col>
-                                <Form.Group
+                            <Form.Group
                                     className='mt-3 mb-2'
                                 >
                                     <Form.Label className={`${style.skillsLabel}`}>
@@ -353,7 +351,7 @@ export default function JobApply({ handleApplyJobBackIconClick, styles, applyJob
                                                 />
                                                 :
                                                 <div className={`${style.videoDiv} d-flex justify-content-center align-items-center py-3 position-relative`}>
-                                                    <FaVideo
+                                                    <IconLetterX
                                                         size={17}
                                                         className={`${style.iconCross}`}
                                                         onClick={handleVideoChange}
