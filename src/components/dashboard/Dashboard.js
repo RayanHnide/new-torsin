@@ -66,7 +66,20 @@ export default function Dashboard() {
                         </Col>
                         <Col md={6} sm={8} xs={10} className={`position-relative d-flex justify-content-end mt-2 ms-auto`} onClick={handleSearchDiv}>
 
-                           <button className='btn btn-outline-primary'>
+                          <button style={{
+                             fontWeight: '400',
+                             fontSize: '14px',
+                             lineHeight: '140%',
+
+                             cursor: 'pointer',
+                             padding: '1.5% 4%',
+                             gap: '8px',
+                             background: '#0E184D',
+                             borderRadius: '12px',
+                             fonWeight: '700',
+                             color: '#FFFFFF',
+                             border: '0',
+                           }}  >
                              All Jops
                            </button>
 
