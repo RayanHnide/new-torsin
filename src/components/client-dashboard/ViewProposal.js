@@ -135,7 +135,7 @@ export default function ViewProposal({ jobId, styles, style, setViewJobProposal,
                                 placeholder='450.00$'
                                 className={`${style.formInput} ${styles.formInputColor} py-3 px-4 bg-white`}
                                 name='charge'
-                                value={viewJobProposal?.projectType ? viewJobProposal?.projectType == '1' ? 'Hourly' : 'Weekly' : 'N/A'}
+                                value={viewJobProposal?.projectType ? viewJobProposal?.projectType == '1' ? 'Hourly' : 'Fixed' : 'N/A'}
                                 disabled
                             />
                         </Form.Group>
