@@ -12,6 +12,7 @@ import { useUserAuth } from '../../firebase_setup/auth/UserAuthContext';
 import { handleErrorMessage } from "../../utils/CommonFunctions";
 import { Toaster, toast } from 'react-hot-toast';
 import { Oval } from 'react-loader-spinner';
+import axios from "axios";
 
 const initial = {
     email: "",
@@ -68,7 +69,7 @@ export default function MainPage({ query }) {
                 delete data.email;
             }
 
-            API.apiPost("userLogin", (data))
+            axios.post("https://admin.torsin.com/api/users/email-login/", (data))
                 .then((response) => {
                     if (response) {
                         toast.success(response?.data?.response?.message?.successMessage, {
@@ -80,7 +81,7 @@ export default function MainPage({ query }) {
                                 marginRight: "25px",
                             },
                         });
-                        auth.login((`Bearer ${response?.data?.response?.data?.token?.access}`));
+                        auth.login((`Bearer ${response?.data?.access}`));
                         router.push("/dashboard")
                     }
                 })
