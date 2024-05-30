@@ -15,6 +15,7 @@ import MultiSelectDropdown from './Multiselect';
 import { Country, State, City } from "country-state-city";
 import Select from "react-select";
 import { useRouter } from 'next/router';
+import axios from "axios";
 
 export default function Publish({ editJob, publishFun, adminServices, setEditJob, style1 }) {
 
@@ -52,7 +53,8 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
     const [imageUrl1, setImageUrl] = useState([]);
 
     const dispatch = useDispatch();
-    const corresCity = useSelector((Gstate) => Gstate?.PublishJobReducers?.corresCity)
+    // const corresCity = useSelector((Gstate) => Gstate?.PublishJobReducers?.corresCity)
+    const [corresCity,setcCorresCity] = useState([])
 
     !editJob && thirdStep && setTimeout(() => {
         publishFun(false);
@@ -70,6 +72,7 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
             }
         }
     }, [data.countryName]);
+
 
     useEffect(() => {
         if (editJob) {
@@ -102,7 +105,10 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
     }
 
     useEffect(() => {
-        selectedCountry?.name && dispatch(getCorresCity(selectedCountry.name))
+        selectedCountry?.name && axios.get(`https://admin.torsin.com/v1/api/city/filter?countryName=${selectedCountry.name}`).then((res)=>{
+            console.log(res)
+            setcCorresCity(res.data.response)
+        })
     }, [selectedCountry?.name])
 
     const handleSecondPage = () => {
@@ -278,8 +284,7 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
             boxShadow: 'none', // Remove the box shadow
         }),
     };
-
-    const getOptionsArray = () => {
+     const getOptionsArray = () => {
         return Object.entries(corresCity).map(([value, label]) => ({
             value,
             label,
@@ -320,6 +325,7 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
                                 }}
                                 value={selectedCountry}
                                 onChange={(item) => {
+                                    console.log(item)
                                     setSelectedCountry(item);
                                     setShowErrors1(false)
                                 }}
@@ -372,13 +378,11 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
                         ))} */}
                     </Row>
 
-                    <div className='d-flex justify-content-center align-items-center'>
-                        <button className={`${styles.nextButton} my-4 px-5 py-3`} onClick={handleFirstPage} >Next</button>
-                    </div>
+
                 </Container>
             }
 
-            {secondStep &&
+
                 <Container>
                     <Row className={`${styles.outerBox} p-4`}>
                         <p className={`${styles.addLocationTitle}`}>Add Description</p>
@@ -595,7 +599,7 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
                         </button>
                     </div>
                 </Container>
-            }
+
 
             {
                 thirdStep &&
