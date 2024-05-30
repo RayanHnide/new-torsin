@@ -1,5 +1,71 @@
+// import axios from "axios"
+//
+// import { useState } from "react"
+// import {useRouter} from "next/router";
+//
+// export default function Register(){
+//     const  router = useRouter()
+//     const [email, setEmail] = useState('')
+//     const [phone_number, setPhoneNumber] = useState('')
+//     const [password, setPassword] = useState('')
+//     const [fullName, setFullName] = useState('')
+//     const [gender, setGender] = useState(1)
+//     const [profileImage, setProfileImage] = useState(null)
+//     const [bio, setBio] = useState('')
+//     const [location, setLocation] = useState('')
+//     const [countryId, setCountryId] = useState(null)
+//     const [countryName, setCountryName] = useState(null)
+//
+//     function handleRegister(){
+//         axios.post("https://admin.torsin.com/api/users/signup/", {
+//             email,
+//             phone_number,
+//             password,
+//             fullName,
+//             gender: 1,
+//             profileImage: null,
+//             bio,
+//             location,
+//             countryId: null,
+//             countryName: null
+//         }).then((res)=>{
+//
+//             console.log(res)
+//             router.push("/dashboard")
+//
+//         }).catch((err)=>{
+//
+//             console.log(err);
+//         })
+//     }
+//
+//     return(
+//         <>
+//             <div className="container">
+//                 <div className="form">
+//                     <input  onChange={(e)=>setEmail(e.target.value)} className="form-control" type="email" placeholder="Enter Your Email" />
+//                     <input onChange={(e)=>setPhoneNumber(e.target.value)} className="form-control" type="text" placeholder="Enter Your Phone Number" />
+//                     <input onChange={(e)=>setPassword(e.target.value)} className="form-control" type="password" placeholder="Enter Your Password" />
+//                     <input onChange={(e)=>setFullName(e.target.value)} className="form-control" type="text" placeholder="Enter Your Full Name" />
+//                     <input onChange={(e)=>setGender(e.target.value)} className="form-control" type="number" placeholder="Enter Your Gender" />
+//                     <input onChange={(e)=>setBio(e.target.value)} className="form-control" type="text" placeholder="Enter Your Bio" />
+//                     <input onChange={(e)=>setLocation(e.target.value)} className="form-control" type="text" placeholder="Enter Your Location" />
+//                     <input onChange={(e)=>{
+//                         console.log(e.target.value);
+//                         setCountryId(e.target.value)
+//                     }} className="form-control" type="number" placeholder="Enter Your Country ID" />
+//                     <input onChange={(e)=>setCountryName(e.target.value)} className="form-control" type="text" placeholder="Enter Your Country Name" />
+//                     <button className="btn btn-primary mt-5" onClick={handleRegister}>
+//                         Register
+//                     </button>
+//                 </div>
+//             </div>
+//         </>
+//     )
+// }
+
 import React, { use, useEffect, useRef, useState } from 'react';
-import { Alert, Col, Container, Form, FormGroup, Image, Modal, Row } from 'react-bootstrap';
+import { Alert, Col, Container, Form, FormGroup, Image, Row } from 'react-bootstrap';
 import styles from "../../stylesheet/register.module.scss";
 import { useRouter } from 'next/router';
 import { useUserAuth } from '../../firebase_setup/auth/UserAuthContext';
@@ -9,6 +75,8 @@ import * as auth from "../../helpers/auth";
 import { handleErrorMessage } from '../../utils/CommonFunctions';
 import { Toaster, toast } from 'react-hot-toast';
 import Validation from "../../utils/Validation";
+import { Modal, Button, ButtonToolbar, Placeholder } from 'rsuite';
+import "rsuite/dist/rsuite.css";
 
 import { IoEyeOutline } from "react-icons/io5";
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -18,26 +86,30 @@ import 'react-phone-input-2/lib/style.css';
 import { Country } from "country-state-city";
 import Select from "react-select";
 import { StandaloneSearchBox, LoadScript } from "@react-google-maps/api";
+import axios from "axios";
 
-const initial = {
-    fullName: "",
-    email: "",
-    mobileNo: "",
-    profileImage: "",
-    gender: "",
-    location: "",
-    password: "",
-    countryName: "",
-    confirmPassword: "",
-}
 
 export default function RegisterPage({ send }) {
+    const initial = {
+        fullName: "",
+        email: "",
+        mobileNo: "",
+        profileImage: null,
+        gender: 1,
+        location: "",
+        password: "",
+        countryName: "",
+        confirmPassword: "",
+        phone_Number:""
+    }
 
-    const [data, setData] = useState(initial);
+     const [data, setData] = useState(initial);
+    const [phone_Number,setPhoneNumber] = useState('')
     const { fullName, email, mobileNo, profileImage, gender, location, password, countryName, confirmPassword } = data;
     const [individual, setIndividual] = useState(false);
     const [business, setBusiness] = useState(false);
     const router = useRouter();
+    console.log(countryName)
     const [otp, setOtp] = useState("");
     const [confirmOTP, setConfirmOTP] = useState("");
     const [verifyIcon, setVerifyIcon] = useState(false);
@@ -156,29 +228,29 @@ export default function RegisterPage({ send }) {
             });
             return;
         }
-        // else if (!emailVerifyIcon) {
-        //     toast.error("Please verify your email for registration", {
-        //         position: "top-right",
-        //         style: {
-        //             borderBottom: '4px solid #33a34e',
-        //             padding: "16px",
-        //             color: "#3c5f4b",
-        //             marginRight: "25px",
-        //         },
-        //     });
-        //     return;
-        // }
-        // else if (!verifyIcon) {
-        //     toast.error("Please verify your mobile number before registration!", {
-        //         position: "top-right",
-        //         style: {
-        //             borderBottom: '4px solid #33a34e',
-        //             padding: "16px",
-        //             color: "#3c5f4b",
-        //             marginRight: "25px",
-        //         },
-        //     });
-        //     return;
+            // else if (!emailVerifyIcon) {
+            //     toast.error("Please verify your email for registration", {
+            //         position: "top-right",
+            //         style: {
+            //             borderBottom: '4px solid #33a34e',
+            //             padding: "16px",
+            //             color: "#3c5f4b",
+            //             marginRight: "25px",
+            //         },
+            //     });
+            //     return;
+            // }
+            // else if (!verifyIcon) {
+            //     toast.error("Please verify your mobile number before registration!", {
+            //         position: "top-right",
+            //         style: {
+            //             borderBottom: '4px solid #33a34e',
+            //             padding: "16px",
+            //             color: "#3c5f4b",
+            //             marginRight: "25px",
+            //         },
+            //     });
+            //     return;
         // }
         else {
             setShowErrors(false);
@@ -186,7 +258,18 @@ export default function RegisterPage({ send }) {
             data.countryId = countryId;
             data.countryName = selectedCountry.name
 
-            API.apiPost("individualRegistration", (data))
+            axios.post("https://admin.torsin.com/api/users/signup/", {
+                email:email,
+                phone_number:phone,
+                password:password,
+                fullName:fullName,
+                gender: 1,
+                profileImage: null,
+                bio:"loremmmmmmmmmmmmmmm",
+                location :location,
+                countryId: countryId,
+                countryName: countryName
+            })
                 .then((response) => {
                     if (response) {
                         toast.success(response?.data?.response?.message?.successMessage, {
@@ -198,24 +281,42 @@ export default function RegisterPage({ send }) {
                                 marginRight: "25px",
                             },
                         });
-                        auth.login((`Bearer ${response?.data?.response?.data?.token?.access}`));
-                        router.push("/dashboard")
+                        // auth.login((`Bearer ${response?.data?.response?.data?.token?.access}`));
+                        setOpen(true);
+                        axios.post("https://admin.torsin.com/api/users/send-email-verification-code/",{
+                            email: email
+                        }).then((res)=>{
+                            console.log(res)
+                        })
                     }
                 })
                 .catch((error) => {
-                    if (error?.response?.data?.error?.errorMessage === "Email already register") {
-                        setEmailVerifyIcon(false)
-                        setEmailOtp("");
-                    }
-                    else if (error?.response?.data?.error?.errorMessage === "Mobile No already register") {
-                        setVerifyIcon(false);
-                        setOtp("");
-                    }
+                    // if (error?.response?.data?.error?.errorMessage === "Email already register") {
+                    //     setEmailVerifyIcon(false)
+                    //     setEmailOtp("");
+                    // }
+                    // else if (error?.response?.data?.error?.errorMessage === "Mobile No already register") {
+                    //     setVerifyIcon(false);
+                    //     setOtp("");
+                    // }
                     handleErrorMessage(error);
                 });
+
+
+
         }
     }
+   const handleLOGIN=()=>{
+        axios.post(" https://admin.torsin.com/api/users/verify-email/",{
+            email: email,
+            email_code: "123456"
 
+        }).then((res)=>{
+            console.log(res)
+            auth.login((`Bearer ${res?.data?.access}`));
+            router.push("/dashboard")
+        })
+   }
     const handleBusinessRegister = (e) => {
         setShowErrors(true);
         if (Validation.empty(fullName) ||
@@ -243,17 +344,17 @@ export default function RegisterPage({ send }) {
             });
             return;
         }
-        // else if (!verifyIcon) {
-        //     toast.error("Please verify your mobile number before registration!", {
-        //         position: "top-right",
-        //         style: {
-        //             borderBottom: '4px solid #33a34e',
-        //             padding: "16px",
-        //             color: "#3c5f4b",
-        //             marginRight: "25px",
-        //         },
-        //     });
-        //     return;
+            // else if (!verifyIcon) {
+            //     toast.error("Please verify your mobile number before registration!", {
+            //         position: "top-right",
+            //         style: {
+            //             borderBottom: '4px solid #33a34e',
+            //             padding: "16px",
+            //             color: "#3c5f4b",
+            //             marginRight: "25px",
+            //         },
+            //     });
+            //     return;
         // }
         else {
             data.mobileNo = num.replace(`${countryId}`, '')
@@ -290,15 +391,17 @@ export default function RegisterPage({ send }) {
                     handleErrorMessage(error);
                 });
         }
+
+
     }
 
     const sendOtp = async (e) => {
         // const phone = mobileNo.length && mobileNo[0] === "0" ? "+971" + mobileNo.substr(1) : "+91" + mobileNo;
 
         setError("");
-        // if (mobileNo === "" || mobileNo === undefined) {
-        //     return setError("Please enter a valid phone number !")
-        // }
+        if (mobileNo === "" || mobileNo === undefined) {
+            return setError("Please enter a valid phone number !")
+        }
 
         try {
             const response = await setUpRecaptcha(phone);
@@ -311,7 +414,7 @@ export default function RegisterPage({ send }) {
     }
 
     const sendEmailOtp = () => {
-        API.apiPost("sendOTP", { "email": email })
+       axios.post("https://admin.torsin.com/api/users/send-email-verification-code/", { "email": email })
             .then((response) => {
                 if (response) {
                     toast.success(response?.data?.response?.message?.successMessage, {
@@ -323,14 +426,16 @@ export default function RegisterPage({ send }) {
                             marginRight: "25px",
                         },
                     });
-
                     setVerifyEmailOtpModal(true);
+
                 }
             })
             .catch((error) => {
                 handleErrorMessage(error);
             });
+
     }
+
 
     const verifyEmailOTP = async (e) => {
         if (emailOtp === "" || emailOtp === null) {
@@ -442,10 +547,42 @@ export default function RegisterPage({ send }) {
             }
         }
     };
+    const [open, setOpen] = React.useState(false);
+    const handleClose = () => setOpen(false);
 
     return (
         <>
             <Toaster />
+
+
+            <Modal open={open} onClose={handleClose}>
+                <Modal.Header>
+                    <Modal.Title className='text-center'>
+                        Email Verification
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p className='text-center'> An Email with a verification code was just sent to your email address</p>
+                       <div className='d-flex justify-content-center mt-5'>
+                           <input style={{width:'10%',background:'none',border:'1px solid black',borderRadius:'5px'}} className='mx-2' type="text"/>
+                           <input style={{width:'10%',background:'none',border:'1px solid black',borderRadius:'5px'}} className='mx-2' type="text"/>
+                           <input style={{width:'10%',background:'none',border:'1px solid black',borderRadius:'5px'}} className='mx-2' type="text"/>
+                           <input style={{width:'10%',background:'none',border:'1px solid black',borderRadius:'5px'}} className='mx-2' type="text"/>
+
+                       </div>
+
+
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={handleLOGIN} appearance="primary">
+                        Ok
+                    </Button>
+                    <Button onClick={handleClose} appearance="subtle">
+                        Cancel
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <Modal centered show={OTPModal} onHide={handleMobileOtpModal} dialogClassName={`${styles.modalOuter}`} contentClassName={`${styles.modalBody}`}>
                 <Modal.Header closeButton style={{ border: "0" }}>
                     <Modal.Title closeButton className='text-center'></Modal.Title>
@@ -611,6 +748,7 @@ export default function RegisterPage({ send }) {
                                     }
                                 </Form.Group>
                             </Col>
+
                             <Col>
                                 {/* <Form.Control
                                     type="text"
@@ -767,16 +905,16 @@ export default function RegisterPage({ send }) {
 
                                         (!showErrors ?
 
-                                            <IoEyeOutline size={20} color='grey' className={`cursor-pointer ${styles.eye}`} onClick={() => setShowPassword2(true)} />
-                                            :
-                                            <IoEyeOutline size={20} color='grey' className={`cursor-pointer ${!Validation.password(confirmPassword) ? styles.eyeError : styles.eye}`} onClick={() => setShowPassword2(true)} />
+                                                <IoEyeOutline size={20} color='grey' className={`cursor-pointer ${styles.eye}`} onClick={() => setShowPassword2(true)} />
+                                                :
+                                                <IoEyeOutline size={20} color='grey' className={`cursor-pointer ${!Validation.password(confirmPassword) ? styles.eyeError : styles.eye}`} onClick={() => setShowPassword2(true)} />
                                         )
                                         :
                                         eyeIcon2 &&
                                         (!showErrors ?
-                                            <FaRegEyeSlash size={20} color='grey' className={`cursor-pointer ${styles.eye}`} onClick={() => setShowPassword2(false)} />
-                                            :
-                                            <FaRegEyeSlash size={20} color='grey' className={`cursor-pointer ${!Validation.password(confirmPassword) ? styles.eyeError : styles.eye}`} onClick={() => setShowPassword2(false)} />
+                                                <FaRegEyeSlash size={20} color='grey' className={`cursor-pointer ${styles.eye}`} onClick={() => setShowPassword2(false)} />
+                                                :
+                                                <FaRegEyeSlash size={20} color='grey' className={`cursor-pointer ${!Validation.password(confirmPassword) ? styles.eyeError : styles.eye}`} onClick={() => setShowPassword2(false)} />
                                         )
                                     }
                                     <Form.Control.Feedback type="invalid" className="errorMessage">
@@ -794,14 +932,14 @@ export default function RegisterPage({ send }) {
                                     className='me-3'
                                     name="checkbox"
                                     onChange={handleIndividualChange}
-                                // isInvalid={showErrors && !checkbox}
+                                    // isInvalid={showErrors && !checkbox}
                                 />
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <label htmlFor='check' className={`${styles.agreement}`}>
                                         I have accepted the
                                         <div
                                             className={`${styles.TnC} ms-1`}
-                                        // onClick={() => router.push("/t&c")}
+                                            // onClick={() => router.push("/t&c")}
                                         >
                                             Terms and Conditions.
                                         </div>
@@ -1056,14 +1194,14 @@ export default function RegisterPage({ send }) {
                                 className='me-3'
                                 name="checkbox"
                                 onChange={handleIndividualChange}
-                            // isInvalid={showErrors && !checkbox}
+                                // isInvalid={showErrors && !checkbox}
                             />
                             <div className='d-flex justify-content-center align-items-center'>
                                 <label htmlFor='check' className={`${styles.agreement}`}>
                                     I have accepted the
                                     <div
                                         className={`${styles.TnC} ms-1`}
-                                    // onClick={() => router.push("/t&c")}
+                                        // onClick={() => router.push("/t&c")}
                                     >
                                         Terms and Conditions.
                                     </div>
