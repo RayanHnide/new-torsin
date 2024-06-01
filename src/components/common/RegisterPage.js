@@ -1,4 +1,69 @@
- 
+// import axios from "axios"
+//
+// import { useState } from "react"
+// import {useRouter} from "next/router";
+//
+// export default function Register(){
+//     const  router = useRouter()
+//     const [email, setEmail] = useState('')
+//     const [phone_number, setPhoneNumber] = useState('')
+//     const [password, setPassword] = useState('')
+//     const [fullName, setFullName] = useState('')
+//     const [gender, setGender] = useState(1)
+//     const [profileImage, setProfileImage] = useState(null)
+//     const [bio, setBio] = useState('')
+//     const [location, setLocation] = useState('')
+//     const [countryId, setCountryId] = useState(null)
+//     const [countryName, setCountryName] = useState(null)
+//
+//     function handleRegister(){
+//         axios.post("https://admin.torsin.com/api/users/signup/", {
+//             email,
+//             phone_number,
+//             password,
+//             fullName,
+//             gender: 1,
+//             profileImage: null,
+//             bio,
+//             location,
+//             countryId: null,
+//             countryName: null
+//         }).then((res)=>{
+//
+//             console.log(res)
+//             router.push("/dashboard")
+//
+//         }).catch((err)=>{
+//
+//             console.log(err);
+//         })
+//     }
+//
+//     return(
+//         <>
+//             <div className="container">
+//                 <div className="form">
+//                     <input  onChange={(e)=>setEmail(e.target.value)} className="form-control" type="email" placeholder="Enter Your Email" />
+//                     <input onChange={(e)=>setPhoneNumber(e.target.value)} className="form-control" type="text" placeholder="Enter Your Phone Number" />
+//                     <input onChange={(e)=>setPassword(e.target.value)} className="form-control" type="password" placeholder="Enter Your Password" />
+//                     <input onChange={(e)=>setFullName(e.target.value)} className="form-control" type="text" placeholder="Enter Your Full Name" />
+//                     <input onChange={(e)=>setGender(e.target.value)} className="form-control" type="number" placeholder="Enter Your Gender" />
+//                     <input onChange={(e)=>setBio(e.target.value)} className="form-control" type="text" placeholder="Enter Your Bio" />
+//                     <input onChange={(e)=>setLocation(e.target.value)} className="form-control" type="text" placeholder="Enter Your Location" />
+//                     <input onChange={(e)=>{
+//                         console.log(e.target.value);
+//                         setCountryId(e.target.value)
+//                     }} className="form-control" type="number" placeholder="Enter Your Country ID" />
+//                     <input onChange={(e)=>setCountryName(e.target.value)} className="form-control" type="text" placeholder="Enter Your Country Name" />
+//                     <button className="btn btn-primary mt-5" onClick={handleRegister}>
+//                         Register
+//                     </button>
+//                 </div>
+//             </div>
+//         </>
+//     )
+// }
+
 import React, { use, useEffect, useRef, useState } from 'react';
 import { Alert, Col, Container, Form, FormGroup, Image, Row } from 'react-bootstrap';
 import styles from "../../stylesheet/register.module.scss";
@@ -30,7 +95,7 @@ export default function RegisterPage({ send }) {
         email: "",
         mobileNo: "",
         profileImage: null,
-        gender: 1,
+
         location: "",
         password: "",
         countryName: "",
@@ -38,9 +103,10 @@ export default function RegisterPage({ send }) {
         phone_Number:""
     }
 
+   const [gender,setGender] = useState('')
      const [data, setData] = useState(initial);
     const [phone_Number,setPhoneNumber] = useState('')
-    const { fullName, email, mobileNo, profileImage, gender, location, password, countryName, confirmPassword } = data;
+    const { fullName, email, mobileNo, profileImage, location, password, countryName, confirmPassword } = data;
     const [individual, setIndividual] = useState(false);
     const [business, setBusiness] = useState(false);
     const router = useRouter();
@@ -136,7 +202,21 @@ export default function RegisterPage({ send }) {
     }
 
     const [error, setError] = useState("");
-
+     const verifyEmail=()=>{
+         axios.post("https://admin.torsin.com/api/users/send-email-verification-code/",{
+             email: email
+         }).then((res)=>{
+             toast.success('We have  sent you  the code via email.please check your inbox ', {
+                 position: "top-right",
+                 style: {
+                     borderBottom: '4px solid #33a34e',
+                     padding: "16px",
+                     color: "#3c5f4b",
+                     marginRight: "25px",
+                 },
+             });
+         }).catch((err)=>console.log(err))
+     }
     const handleIndividualRegister = (e) => {
         setShowErrors(true);
         if (!Validation.alphabets(fullName) ||
@@ -198,7 +278,7 @@ export default function RegisterPage({ send }) {
                 phone_number:phone,
                 password:password,
                 fullName:fullName,
-                gender: 1,
+                gender: "",
                 profileImage: null,
                 bio:"loremmmmmmmmmmmmmmm",
                 location :location,
@@ -221,8 +301,16 @@ export default function RegisterPage({ send }) {
                         axios.post("https://admin.torsin.com/api/users/send-email-verification-code/",{
                             email: email
                         }).then((res)=>{
-                            console.log(res)
-                        })
+                            toast.success('We have  sent you  the code via email.please check your inbox ', {
+                                position: "top-right",
+                                style: {
+                                    borderBottom: '4px solid #33a34e',
+                                    padding: "16px",
+                                    color: "#3c5f4b",
+                                    marginRight: "25px",
+                                },
+                            });
+                        }).catch((err)=>console.log(err))
                     }
                 })
                 .catch((error) => {
@@ -493,11 +581,11 @@ export default function RegisterPage({ send }) {
             <Modal open={open} onClose={handleClose}>
                 <Modal.Header>
                     <Modal.Title className='text-center'>
-                        Email Verification
+                      Verify Your Email
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p className='text-center'> An Email with a verification code was just sent to your email address</p>
+                    <p className='text-center'> We sent an Emial to {data.email}</p>
                        <div className='d-flex justify-content-center mt-5'>
                            <input style={{width:'10%',background:'none',border:'1px solid black',borderRadius:'5px'}} className='mx-2' type="text"/>
                            <input style={{width:'10%',background:'none',border:'1px solid black',borderRadius:'5px'}} className='mx-2' type="text"/>
@@ -515,6 +603,10 @@ export default function RegisterPage({ send }) {
                     </Button>
                     <Button onClick={handleClose} appearance="subtle">
                         Cancel
+                    </Button>
+
+                    <Button onClick={verifyEmail} appearance="subtle">
+                       resend
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -815,10 +907,12 @@ export default function RegisterPage({ send }) {
                         <div id="recaptcha-container" className={`${verifyIcon ? "d-none" : ""}`} />
                         <Row className='my-4'>
                             <Col>
-                                <Form.Select className={`${!gender ? "greyLabel" : styles.formInput} py-2 px-4 rounded-5`} aria-label="Default select example" name="gender" onChange={handleIndividualChange} isInvalid={showErrors && Validation.empty(gender)}>
+                                <Form.Select className={`${!gender ? "greyLabel" : styles.formInput} py-2 px-4 rounded-5`} aria-label="Default select example" name="gender" onChange={(e)=>{
+                                   setGender(e.target.value)
+                                }} isInvalid={showErrors && Validation.empty(gender)}>
                                     <option hidden>Gender</option>
-                                    <option value="1">Male</option>
-                                    <option value="2">Female</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
                                 </Form.Select>
                                 <Form.Control.Feedback type="invalid" className="errorMessage">
                                     {!gender && "Please select gender"}
