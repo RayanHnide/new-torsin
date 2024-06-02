@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+ import React, { useEffect, useState } from "react";
 import styles from "../../stylesheet/profile.module.scss";
 import style from "../../stylesheet/dashboard.module.scss";
 import {
@@ -36,6 +36,7 @@ import { useRouter } from "next/router";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import Upload from "./Upload";
 import ViewModal from "./ViewModal";
+import Settings from "../settings/Settings";
 
 export default function Profile() {
   const router = useRouter();
@@ -881,7 +882,7 @@ export default function Profile() {
                           alt="phone"
                         />
                         <span className={`ms-3 ${styles.personDetails}`}>
-                          {profileList?.mobileNo}
+                          {profileList?.phone_number}
                         </span>
                       </div>
                       <div className="d-flex align-items-center my-3">
@@ -1260,6 +1261,10 @@ export default function Profile() {
           }
         />
       ) : null}
+
+      <div className="container pt-4">
+        <Settings />
+      </div>
     </>
   );
 }
