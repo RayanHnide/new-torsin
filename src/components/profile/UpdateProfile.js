@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+ import React, { useEffect, useRef, useState } from 'react';
 import styles from '../../stylesheet/profile.module.scss';
 import style from '../../stylesheet/dashboard.module.scss';
-import { Col, Container, Form, Image, Modal, Row, Button, Card } from 'react-bootstrap';
+import { Col, Container, Form, Image, Row, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfileDetails } from '../../store/actions/profile';
 import API from '../../helpers/api';
@@ -15,11 +15,16 @@ import { Country } from "country-state-city";
 import Select from "react-select";
 import { useRouter } from 'next/router';
  import { FiChevronsLeft} from "react-icons/fi";
+import { Modal, Button, ButtonToolbar, Placeholder } from 'rsuite';
+import "rsuite/dist/rsuite.css";
+
+
 
 import { StandaloneSearchBox, LoadScript } from "@react-google-maps/api";
+import axios from "axios";
+import * as auth from "../../helpers/auth";
 
 export default function UpdateProfile() {
-
     const router = useRouter()
     const dispatch = useDispatch();
     const [profileList] = useSelector((Gstate) => [
@@ -27,9 +32,36 @@ export default function UpdateProfile() {
     ]);
 
     const [data, setData] = useState(profileList);
-    const { fullName, email, gender, mobileNo, bio, location, profileImage, countryName } = data;
+    const { fullName, email, gender, phone_number, bio, location, profileImage, countryName } = data;
     const [showErrors, setShowErrors] = useState(false);
+    const [open, setOpen] = React.useState(false);
+    const handleClose = () => setOpen(false);
+    const handleLOGIN=()=>{
+        axios.post(" https://admin.torsin.com/api/users/verify-email/",{
+            email: email,
+            email_code: "123456"
 
+        }).then((res)=>{
+            console.log(res)
+            auth.login((`Bearer ${res?.data?.access}`));
+            router.back()
+        })
+    }
+    const verifyEmail=()=>{
+        axios.post("https://admin.torsin.com/api/users/send-email-verification-code/",{
+            email: email
+        }).then((res)=>{
+            toast.success('We have  sent you  the code via email.please check your inbox ', {
+                position: "top-right",
+                style: {
+                    borderBottom: '4px solid #33a34e',
+                    padding: "16px",
+                    color: "#3c5f4b",
+                    marginRight: "25px",
+                },
+            });
+        }).catch((err)=>console.log(err))
+    }
     useEffect(() => {
         if (data && data.countryName) {
             const preSelectedCountry = Country.getAllCountries().find(
@@ -112,7 +144,7 @@ export default function UpdateProfile() {
         if (
             !Validation.alphabets(fullName) ||
             !Validation.email(email) ||
-            !Validation.number(mobileNo) ||
+            // !Validation.number(phone_number) ||
             // Validation.empty(location) ||
             // Validation.empty(countryName)
             !selectedCountry ||
@@ -130,7 +162,12 @@ export default function UpdateProfile() {
             if (bio == '') {
                 data.bio = null
             }
-            API.apiPut("updateTalentProfile", (data))
+            axios.put("https://admin.torsin.com/api/users/profile/", (data),{
+                headers:{
+                    Authorization:`${localStorage.getItem('accessToken')}`
+
+                }
+            })
                 .then((response) => {
                     if (response) {
                         toast.success(response?.data?.response?.message?.successMessage, {
@@ -142,8 +179,22 @@ export default function UpdateProfile() {
                                 marginRight: "25px",
                             },
                         });
+                        setOpen(true);
+                        axios.post("https://admin.torsin.com/api/users/send-email-verification-code/",{
+                            email: email
+                        }).then((res)=>{
+                            toast.success('We have  sent you  the code via email.please check your inbox ', {
+                                position: "top-right",
+                                style: {
+                                    borderBottom: '4px solid #33a34e',
+                                    padding: "16px",
+                                    color: "#3c5f4b",
+                                    marginRight: "25px",
+                                },
+                            });
+                        })
                         dispatch(getProfileDetails())
-                        router.back()
+                        // router.back()
                     }
                 })
                 .catch((err) => {
@@ -201,6 +252,38 @@ export default function UpdateProfile() {
     return (
         <>
             <Toaster />
+            <Modal open={open} onClose={handleClose}>
+                <Modal.Header>
+                    <Modal.Title className='text-center'>
+                        Verify Your Email
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p className='text-center'> We sent an Emial to {data.email}</p>
+                    <div className='d-flex justify-content-center mt-5'>
+                        <input style={{width:'10%',background:'none',border:'1px solid black',borderRadius:'5px'}} className='mx-2' type="text"/>
+                        <input style={{width:'10%',background:'none',border:'1px solid black',borderRadius:'5px'}} className='mx-2' type="text"/>
+                        <input style={{width:'10%',background:'none',border:'1px solid black',borderRadius:'5px'}} className='mx-2' type="text"/>
+                        <input style={{width:'10%',background:'none',border:'1px solid black',borderRadius:'5px'}} className='mx-2' type="text"/>
+
+                    </div>
+
+
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={handleLOGIN} appearance="primary">
+                        Ok
+                    </Button>
+                    <Button onClick={handleClose} appearance="subtle">
+                        Cancel
+                    </Button>
+
+                    <Button onClick={verifyEmail} appearance="subtle">
+                        resend
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <div className={`d-flex justify-content-start align-items-center pt-4 mb-2 ${style.publishNav}`}>
                 <span className='me-3' role='button'>
                     <FiChevronsLeft onClick={() => router.back()} />
@@ -362,16 +445,19 @@ export default function UpdateProfile() {
                             <Form.Label className={`${styles.formLabel}`}>Mobile Number</Form.Label>
                             <Form.Control
                                 type='text'
-                                name="mobileNo"
-                                value={mobileNo}
-                                onChange={handleProfileChange}
+                                name="phone_number"
+                                value={phone_number}
+                                onChange={(e)=>{
+                                    handleProfileChange(e)
+                                    console.log(e.target.value)
+                                }}
                                 className={`${styles.skillsFormInput} py-3 px-4`}
-                                isInvalid={showErrors && !Validation.number(mobileNo)}
-                                maxLength={10}
+                                // isInvalid={showErrors && !Validation.number(phone_number)}
+                                maxLength={14}
                             />
-                            <Form.Control.Feedback type="invalid" className="errorMessage">
-                                {!mobileNo ? "Please enter mobile no." : "Alphabets and/or special characters are not allowed"}
-                            </Form.Control.Feedback>
+                            {/*<Form.Control.Feedback type="invalid" className="errorMessage">*/}
+                            {/*    {!phone_number ? "Please enter mobile no." : "Alphabets and/or special characters are not allowed"}*/}
+                            {/*</Form.Control.Feedback>*/}
                         </Form.Group>
                     </Col>
                     <Col md={5}>
