@@ -57,13 +57,6 @@
     IconActive: "/images/profileActive.png",
   },
  
-  {
-    id: 9,
-    name: "Account ",
-    link: "/settings",
-    Icon: "/images/settings.png",
-    IconActive: "/images/settingsActive.png",
-  },
 
  
 
