@@ -51,12 +51,12 @@
   },
   {
     id: 8,
-    name: "Profile",
+    name: "User Details",
     link: "/profile",
     Icon: "/images/profile.png",
     IconActive: "/images/profileActive.png",
   },
- 
+
 
  
 
