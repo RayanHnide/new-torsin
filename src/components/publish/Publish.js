@@ -16,7 +16,9 @@ import { Country, State, City } from "country-state-city";
 import Select from "react-select";
 import { useRouter } from 'next/router';
 import axios from "axios";
-
+import {CheckPicker, Stack} from "rsuite";
+import 'rsuite/dist/rsuite.css'
+ 
 export default function Publish({ editJob, publishFun, adminServices, setEditJob, style1 }) {
 
     const initial = {
@@ -30,9 +32,16 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
         priceRate: editJob ? editJob.priceRate : "",
     }
 
-    const [addPhotoFields, setAddPhotoFields] = useState([{ photos: '' }]);
+    const [addPhotoFields, setAddPhotoFields] = useState([{ photos: [''] }]);
     const [editJobPhotos, setEditJobPhotos] = useState('');
     const router = useRouter()
+
+     useEffect(()=>{
+         console.log('sssssssssssssssssssss')
+          axios.get('https://admin.torsin.com/v1/api/admin/services').then((res)=>{
+              console.log(res)
+           })
+     },[])
 
     useEffect(() => {
         editJob && setAddPhotoFields(photos.map(url => ({ photos: url })));
@@ -242,7 +251,7 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
     const addPhotos = () => {
         let item = [...addPhotoFields];
         let obj = {
-            photos: ''
+            photos: ['']
         }
         if (item.length < 5) {
             item.push(obj)
@@ -465,6 +474,7 @@ export default function Publish({ editJob, publishFun, adminServices, setEditJob
                                             <Form.Label htmlFor={`photo${id}`}>
                                                 <span htmlFor={`photo${id}`} className={`${styles.browseButton}`}>Browse</span>
                                                 <input
+                                                    multiple={true}
                                                     id={`photo${id}`}
                                                     className='d-none'
                                                     type="file"
