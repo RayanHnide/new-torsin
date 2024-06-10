@@ -471,7 +471,7 @@ export default function UpdateProfile() {
                                     return options["name"];
                                 }}
                                 placeholder='eg. South Dakota'
-                                getOptionValue={(options) => {
+                                getOpti onValue={(options) => {
                                     return options["name"];
                                 }}
                                 value={selectedCountry}
