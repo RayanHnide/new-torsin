@@ -1,4 +1,4 @@
-
+ 
 import axios from 'axios';
 import { Country } from "country-state-city";
 import styles from '../../stylesheet/profile.module.scss';
@@ -28,9 +28,11 @@ import { MdDeleteForever } from "react-icons/md";
 
 
 import * as auth from "../../helpers/auth";
+import {useRouter} from "next/router";
 
 
 export default function EditProfile(){
+    const router = useRouter()
     // const [addPhotoFields, setAddPhotoFields] = useState([{ photos: [''] }]);
     const [file, setFile] = useState()
     const[experienceData,setexperienceData] = useState({
@@ -255,8 +257,18 @@ export default function EditProfile(){
                  Authorization:localStorage.getItem('accessToken')
              }
          }).then((res)=>{
-             console.log(res)
-         })
+             toast.success('Updated Done', {
+                 position: "top-right",
+                 style: {
+                     borderBottom: '4px solid #33a34e',
+                     padding: "16px",
+                     color: "#3c5f4b",
+                     marginRight: "25px",
+                 },
+             });
+              router.push('/dashboard')
+         }).catch((err)=>console.log(err))
+
     }
 
 
