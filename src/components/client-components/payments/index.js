@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+ import React, { useEffect, useState } from 'react';
 import styles from '../../../stylesheet/payment.module.scss';
 import style from "../../../stylesheet/publish.module.scss";
 import style1 from "../../../stylesheet/dashboard.module.scss";
@@ -14,8 +14,12 @@ import { Toaster, toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCardDetails } from '../../../store/actions/client-action/Payment';
 import CardDetails from './CardDetails';
-
+import * as stripe from "stripe";
 export default function index() {
+
+
+
+
 
     const [addCardModal, setAddCardModal] = useState(false);
     const dispatch = useDispatch();
@@ -39,6 +43,9 @@ export default function index() {
                 const cardNumberWithoutSpaces = value.replace(/\s/g, '');
                 return cardNumberWithoutSpaces.length >= 13 && cardNumberWithoutSpaces.length <= 16;
             }),
+
+
+
 
         expiryDate: yup
             .string()
@@ -66,14 +73,13 @@ export default function index() {
     const handleSubmit = (values) => {
 
         const data = {
-            cardNumber: Number(values.cardNumber.replace(/\s/g, '')),
-            exp_month: Number(values.expiryDate.split('/')[0]),
-            exp_year: parseInt(20 + '' + Number(values.expiryDate.split('/')[1])),
-            cvc: Number(values.cvv),
+            cardNumber: String(values.cardNumber.replace(/\s/g, '')),
+            exp_month: String(values.expiryDate.split('/')[0]),
+            exp_year: String(20 + '' + Number(values.expiryDate.split('/')[1])),
+            cvc: String(values.cvv),
             name: values.name,
             isDefault: values.isDefault ? 1 : 0,
         }
-
         API.apiPost("addCard", (data))
             .then((response) => {
                 if (response) {
@@ -320,6 +326,7 @@ export default function index() {
                                 </p>
                             </div>
                             <div>
+
                                 <div
                                     className={`${style.publishButton} text-center d-flex justify-content-center align-items-center px-5 py-3`}
                                     onClick={() => setAddCardModal(true)}
@@ -376,4 +383,8 @@ export default function index() {
             }
         </>
     )
+
+
+
+    
 }
