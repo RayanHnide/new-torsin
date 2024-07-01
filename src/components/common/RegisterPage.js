@@ -1,4 +1,4 @@
-    // import axios from "axios"
+     // import axios from "axios"
     //
     // import { useState } from "react"
     // import {useRouter} from "next/router";
@@ -95,7 +95,9 @@
             email: "",
             mobileNo: "",
             profileImage: null,
-
+            cv:null,
+            porfolio:null,
+            video:null,
             location: "",
             password: "",
             countryName: "",
@@ -280,6 +282,9 @@
                     fullName:fullName,
                     gender: "",
                     profileImage: null,
+                    cv:null,
+                    portfolio:null,
+                    video:null,
                     bio:"loremmmmmmmmmmmmmmm",
                     location :location,
                     countryId: countryId,
@@ -297,7 +302,7 @@
                                 },
                             });
                             // auth.login((`Bearer ${response?.data?.response?.data?.token?.access}`));
-                            setOpen(true);
+                               setOpen(true);
                             axios.post("https://admin.torsin.com/api/users/send-email-verification-code/",{
                                 email: email
                             }).then((res)=>{
